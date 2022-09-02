@@ -14,14 +14,14 @@ function Login() {
         console.log(email,password)
         // e.preventDefault()
 
-        axios.post('/login' , {
+        axios.post('http://localhost:4000/api/login' , {
              email,
              password
         }).then((response) => {
             console.log("posting data" , response)
             navigate('/');
         }).catch((err) => {
-            console.log(err)
+            console.log(err.response.data.err)
         })
     };
 
