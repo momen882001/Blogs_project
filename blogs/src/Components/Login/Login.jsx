@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useForm } from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 import axios from 'axios'
 
 function Login() {
@@ -7,17 +8,18 @@ function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
-  
+    const navigate = useNavigate();
 
     const onSubmit = (e) => {
         console.log(email,password)
-        e.preventDefault()
+        // e.preventDefault()
 
-        axios.post('http://localhost:3000' , {
+        axios.post('/login' , {
              email,
              password
         }).then((response) => {
             console.log("posting data" , response)
+            navigate('/');
         }).catch((err) => {
             console.log(err)
         })
