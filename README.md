@@ -1,3 +1,8 @@
+# To run the whole application
+
+- run this command: \
+  `npm run dev-start`
+
 # To run the server
 
 - install packages by this command \
