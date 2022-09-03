@@ -12,6 +12,7 @@ function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [err,setErr] = useState()
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
@@ -25,7 +26,7 @@ function Login() {
             console.log("posting data", response)
             navigate('/');
         }).catch((err) => {
-            console.log(err.response.data.err)
+            setErr(err.response.data.err)
         })
     };
 
@@ -43,7 +44,7 @@ function Login() {
                 <div className="row">
                     <label htmlFor="">Password :</label>
                     <input required  type="password" {...register("password", { required: true, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/ })} placeholder="Write your password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    {errors.password && <p className="error">Please Enter Valid Password </p>}
+                    {err === "" ? errors.password && <p className="error">Please Enter Valid Password </p> : <p className="error">{err}</p> }
                 </div>
 
                 <button className="login-btn" type="submit">Login</button>

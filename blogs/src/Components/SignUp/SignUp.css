@@ -101,4 +101,10 @@ html{
 .signup-con {
     display: flex;
     flex-wrap: wrap;
-}  
+}
+
+.confirm-pass {
+    font-size:x-small;
+    color: rgba(34,193,195,1);
+    font-weight:500;
+}

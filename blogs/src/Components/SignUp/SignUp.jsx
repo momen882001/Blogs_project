@@ -62,6 +62,8 @@ function SignUp() {
                     <input type="date" required placeholder="Write your Birthdate" value={birthdate} onChange={(e) => setBirthdate(e.target.value)}/>
                 </div>
 
+                { password === confirm_password ? null : <p className="confirm-pass">Write Confirm Password agian</p> }
+
                 </div>
 
                 <button type="submit" className="signup-btn">SignUp</button>
