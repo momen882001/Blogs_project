@@ -35,13 +35,13 @@ function Login() {
             <form className="loginform" onSubmit={handleSubmit(onSubmit)}>
                 <h1 className="h1-login">Login</h1>
 
-                <div className="row">
+                <div className="row-login">
                     <label htmlFor="">Email :</label>
                     <input required  autoFocus type="email"{...register("email", { required: true, pattern: /^[a-zA-Z0-9].+@[a-zA-Z0-9]+\.[A-Za-z]+$/ })} placeholder="Write your email" value={email} onChange={(e) => setEmail(e.target.value)} />
                     {errors.email && <p className="error">Please Enter Valid Email </p>}
                 </div>
 
-                <div className="row">
+                <div className="row-login">
                     <label htmlFor="">Password :</label>
                     <input required  type="password" {...register("password", { required: true, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/ })} placeholder="Write your password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     {err === "" ? errors.password && <p className="error">Please Enter Valid Password </p> : <p className="error">{err}</p> }

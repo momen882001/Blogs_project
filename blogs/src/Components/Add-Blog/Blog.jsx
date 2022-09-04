@@ -31,7 +31,7 @@ function Blog() {
 
                 <h1 className="h1-blog">Add Blog</h1>
 
-               <div className="row">
+               <div className="row-blog">
                <label htmlFor="blog-names">Choose Category:</label>
                 <select value={dropDown} onChange={(e) => setDropDown(e.target.value)} name="blog-names" id="blog-names">
                     <option value="Travel">Travel</option>
@@ -42,14 +42,14 @@ function Blog() {
                 </select>
                </div>
 
-               <div className="row">
+               <div className="row-blog">
                <label>Title :</label>   
                <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Write your title" />
                </div>
 
-               <div className="row">
+               <div className="row-blog">
                <label>Body :</label>
-               <textarea value={textArea} onChange={(e) => setTextArea(e.target.value)} id="textArea-blog" name="textArea-blog" rows="4" cols="50"  placeholder="Write body for your Blog">
+               <textarea value={textArea} onChange={(e) => setTextArea(e.target.value)} id="textArea-blog" name="textArea-blog" rows="4" cols="50"  >
                     
                 </textarea>
                </div>

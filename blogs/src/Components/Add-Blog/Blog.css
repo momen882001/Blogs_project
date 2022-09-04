@@ -35,7 +35,7 @@ html{
   font-size: 2rem;
 }
 
-.row{
+.row-blog{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@ html{
   
 }
 
-.row input{
+.row-blog input{
   width: 80%;
   box-sizing: border-box;
 	border: none;
@@ -55,22 +55,22 @@ html{
   transition: box-shadow 0.2s ease-in;
 }
 
-.row input:focus{
+.row-blog input:focus{
    box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
    outline: none;
 }
 
-.row input::-webkit-input-placeholder{
+.row-blog input::-webkit-input-placeholder{
   opacity: 1;
   transition: opacity 0.25s ease-out;
 }
 
-.row input:hover::-webkit-input-placeholder,
-.row input:focus::-webkit-input-placeholder{
+.row-blog input:hover::-webkit-input-placeholder,
+.row-blog input:focus::-webkit-input-placeholder{
   opacity: 0;
 }
 
-.row label{
+.row-blog label{
   align-self: start;
   padding-left: 2.7rem;
   padding-bottom: 0.9rem;
@@ -102,7 +102,7 @@ textarea {
     resize: none;
     width: 78%;
     border-radius: 0.3rem;
-    border: 1px solid rgba(187,187,187,0.9);
+    border: 2px solid rgba(187,187,187,0.9);
     padding-top: 0.4rem;
     padding-left: 0.6rem;
   }
