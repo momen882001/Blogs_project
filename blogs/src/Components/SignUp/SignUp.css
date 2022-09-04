@@ -107,4 +107,6 @@ html{
     font-size:x-small;
     color: rgba(34,193,195,1);
     font-weight:500;
+    width: 50%;
+    text-align: center;
 }

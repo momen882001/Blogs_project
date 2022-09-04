@@ -7,7 +7,7 @@ function SignUp() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirm_password, setConfirmPassword] = useState('');
+    const [confirm_password, setConfirmPassword] = useState(null);
     const [birthdate, setBirthdate] = useState('');
     const [name, setName] = useState('');
     const navigate = useNavigate();
@@ -62,7 +62,8 @@ function SignUp() {
                     <input type="date" required placeholder="Write your Birthdate" value={birthdate} onChange={(e) => setBirthdate(e.target.value)}/>
                 </div>
 
-                { password === confirm_password ? null : <p className="confirm-pass">Write Confirm Password agian</p> }
+               { password === confirm_password || confirm_password === null ? null :  <p className="confirm-pass">Write Confirm Password agian</p>  }
+                 
 
                 </div>
 

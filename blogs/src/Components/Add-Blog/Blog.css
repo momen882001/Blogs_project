@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+
+.blog{
+  background: rgb(34,193,195);
+  background: linear-gradient(135deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%);
+  font-family: "work sans";
+  height: 100vh;
+}
+
+html{
+  font-size: 100%;
+}
+
+.blog-form{
+  max-width: 500px;
+  min-width: 300px;
+  max-height: 700px;
+  width: 35%;
+  height: 85%;
+  position: absolute ;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #FFFFFF;
+  border-radius: 25px;
+}
+
+.h1-blog{
+  text-align: center;
+  font-family: 'open sans', sans-serif;
+  /* color: rgba(187,187,180);
+  color: rgba(187,187,187,0.2); */
+  padding-top: 2rem;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+  max-width: 100%;
+  
+}
+
+.row input{
+  width: 80%;
+  box-sizing: border-box;
+	border: none;
+  font-size: 1.3rem;
+  padding-left: 0.5rem;
+  padding-bottom: 1rem;
+  box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+  transition: box-shadow 0.2s ease-in;
+}
+
+.row input:focus{
+   box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+   outline: none;
+}
+
+.row input::-webkit-input-placeholder{
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.row input:hover::-webkit-input-placeholder,
+.row input:focus::-webkit-input-placeholder{
+  opacity: 0;
+}
+
+.row label{
+  align-self: start;
+  padding-left: 2.7rem;
+  padding-bottom: 0.9rem;
+  color: rgba(187,187,187,0.9);
+}
+
+.blog-btn{
+  border-radius: 25px;
+  width: 40%;
+  height: 40px;
+  margin-left: 30%;
+  margin-top: 10%;
+  /* margin-bottom: 10%; */
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  background: rgb(34,193,195);
+  background: linear-gradient(90deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%);
+  border: 0px;
+  cursor: pointer;
+  transition: opacity 0.25s ease-out;
+}
+
+.blog-btn:hover{
+  opacity: 0.8;
+}
+
+textarea {
+    resize: none;
+    width: 78%;
+    border-radius: 0.3rem;
+    border: 1px solid rgba(187,187,187,0.9);
+    padding-top: 0.4rem;
+    padding-left: 0.6rem;
+  }
+
+textarea:focus {
+    /* box-shadow: inset 0px -1px 0px 0px rgba(34,193,195,0.7); */
+   outline: none;
+   border: 2px solid rgba(34,193,195,0.7) ;
+}
+
+textarea ::placeholder {
+    opacity: 1;
+  transition: opacity 0.25s ease-out;
+  padding: 1rem;
+}
+
+#blog-names {
+    width: 80%;
+    border: 1px solid rgba(187,187,187,0.7);
+    opacity: 0.7;
+}
+
+#blog-names:focus {
+    outline: none;
+   border: 2px solid rgba(34,193,195,0.7) ;
+}
