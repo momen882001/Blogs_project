@@ -22,3 +22,11 @@
 
 - route name: api/login
 - body: email, password
+
+## login:
+
+- route name: api/blog
+
+* header: auth-token
+
+- body: title, body, category

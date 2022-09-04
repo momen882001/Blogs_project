@@ -22,6 +22,7 @@ app.use(express.json());
 
 app.use("/api", require("./routes/user"));
 app.use("/api", require("./routes/login"));
+app.use("/api", require("./routes/blog"));
 
 app.listen(PORT, () => {
   console.log(`listening to ${PORT}`);
