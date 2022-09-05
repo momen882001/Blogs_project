@@ -47,9 +47,7 @@ router.post("/login", async (req, res) => {
   const token = createToken({ id: user._id });
   res.header("auth-token", token);
 
-  res
-    .status(200)
-    .send({ ..._.pick(user, ["_id", "name", "email", "birthdate"]), token });
+  res.status(200).send({ ...user, token });
 });
 
 module.exports = router;
