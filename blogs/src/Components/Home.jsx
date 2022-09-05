@@ -4,11 +4,17 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 function Home() {
+
+    const Logout = () => {
+        localStorage.removeItem("auth-token")
+    }
+
     return (
         <div className="home">
             <Container>
-                <Row className="justify-content-md-center">
-
+                <Row>
+                    { localStorage.token === undefined ?
+                <>
                     <Col>
 
                         <Link to="/login">
@@ -20,7 +26,32 @@ function Home() {
                         <Link to="/signup">
                             signup
             </Link>
+                    </Col> 
+                    </>
+                    :
+                    
+                    <Col>
+                    <button onClick={Logout}>Logout</button>
                     </Col>
+                    
+                    }
+
+                    {/* <Col>
+
+                        <Link to="/login">
+                            Login
+            </Link>
+                    </Col>
+
+                    <Col>
+                        <Link to="/signup">
+                            signup
+            </Link>
+                    </Col>
+
+                    <Col>
+                    <button onClick={Logout}>Logout</button>
+                    </Col> */}
 
                     <Col>
                         <button>

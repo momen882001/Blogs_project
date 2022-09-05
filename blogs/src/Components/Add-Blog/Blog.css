@@ -82,7 +82,7 @@ html{
   width: 40%;
   height: 40px;
   margin-left: 30%;
-  margin-top: 10%;
+  margin-top: 4%;
   /* margin-bottom: 10%; */
   font-size: 1.3rem;
   color: white;
@@ -128,4 +128,8 @@ textarea ::placeholder {
 #blog-names:focus {
     outline: none;
    border: 2px solid rgba(34,193,195,0.7) ;
+}
+
+#textArea-blog {
+    resize: none;
 }
