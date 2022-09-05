@@ -49,7 +49,7 @@ router.post("/login", async (req, res) => {
 
   res
     .status(200)
-    .send({ ..._.pick(user, ["name", "email", "birthdate"]), token });
+    .send({ ..._.pick(user, ["_id", "name", "email", "birthdate"]), token });
 });
 
 module.exports = router;

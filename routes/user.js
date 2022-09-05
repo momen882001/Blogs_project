@@ -67,7 +67,10 @@ router.post("/user", async (req, res) => {
 
     res
       .status(201)
-      .send({ ..._.pick(newUser, ["name", "email", "birthdate"]), token });
+      .send({
+        ..._.pick(newUser, ["_id", "name", "email", "birthdate"]),
+        token,
+      });
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
