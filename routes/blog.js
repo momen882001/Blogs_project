@@ -41,7 +41,7 @@ router.post("/blog", auth, async (req, res) => {
   try {
     const result = validate(req.body);
     if (result.error)
-      return res.status(400).send(result.error.details[0].message);
+      return res.status(400).json({ err: result.error.details[0].message });
 
     const userId = req.user.id;
     const user = await User.findById(userId);

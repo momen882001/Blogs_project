@@ -41,7 +41,7 @@ router.post("/user", async (req, res) => {
   try {
     const result = validate(req.body);
     if (result.error)
-      return res.status(400).send(result.error.details[0].message);
+      return res.status(400).json({ err: result.error.details[0].message });
 
     const user = result.value;
 

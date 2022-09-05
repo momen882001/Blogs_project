@@ -27,6 +27,7 @@ function SignUp() {
             navigate('/');
             localStorage.setItem("auth-token" , response.data.token)
         }).catch((err) => {
+            console.log(err)
             console.log(err.response.data.err)
         })
     };

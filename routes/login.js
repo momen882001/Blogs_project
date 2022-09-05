@@ -30,7 +30,7 @@ const validate = (user) => {
 router.post("/login", async (req, res) => {
   const result = validate(req.body);
   if (result.error)
-    return res.status(400).send(result.error.details[0].message);
+    return res.status(400).json({ err: result.error.details[0].message });
 
   let user = result.value;
   const exist = await User.findOne({ email: user.email });
