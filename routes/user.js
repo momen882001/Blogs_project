@@ -3,6 +3,12 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
+const _ = require("lodash");
+
+const createToken = (payload) => {
+  const token = jwt.sign(payload, "temporary secret for testing");
+  return token;
+};
 
 const validate = (user) => {
   const passwordValidations = {
@@ -54,7 +60,13 @@ router.post("/user", async (req, res) => {
     newUser.password = await bcrypt.hash(newUser.password, salt);
 
     await newUser.save();
-    res.status(200).json({ message: "User created!" });
+
+    const token = createToken({ id: user._id });
+    res.header("auth-token", token);
+
+    res
+      .status(201)
+      .send({ ..._.pick(newUser, ["name", "email", "birthdate"]), token });
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
