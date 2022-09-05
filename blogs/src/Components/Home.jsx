@@ -7,14 +7,24 @@ function Home() {
 
     const Logout = () => {
         localStorage.removeItem("auth-token")
+        console.log("removed")
+        window.location.reload();
     }
+    console.log(localStorage.token !== undefined)
 
     return (
         <div className="home">
             <Container>
                 <Row>
-                    { localStorage.token === undefined ?
-                <>
+                    { localStorage["auth-token"] !== undefined ?
+               
+               <Col>
+               <button onClick={Logout}>Logout</button>
+               </Col>
+
+                    :
+                    
+                    <>
                     <Col>
 
                         <Link to="/login">
@@ -28,11 +38,6 @@ function Home() {
             </Link>
                     </Col> 
                     </>
-                    :
-                    
-                    <Col>
-                    <button onClick={Logout}>Logout</button>
-                    </Col>
                     
                     }
 
