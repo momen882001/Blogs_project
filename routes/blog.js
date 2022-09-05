@@ -16,7 +16,9 @@ const validate = (user) => {
 //get all blogs
 router.get("/blog", async (req, res) => {
   try {
-    const blogs = await Blog.find({});
+    const [filterName] = Object.keys(req.query);
+    let filter = !filterName ? {} : { authorId: req.query[filterName] };
+    const blogs = await Blog.find(filter);
     res.status(200).send(blogs);
   } catch (err) {
     res.status(500).json(err);
@@ -24,18 +26,7 @@ router.get("/blog", async (req, res) => {
 });
 
 //get all blogs of a user
-router.get("/blog/:userId", async (req, res) => {
-  try {
-    const { userId } = req.params;
-    const blogs = await Blog.find({ authorId: userId });
-    res.status(200).send(blogs);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-//get all blogs of a user
-router.get("/blog/:neg/:blogId", async (req, res) => {
+router.get("/blog/:blogId", async (req, res) => {
   try {
     const { blogId } = req.params;
     const blog = await Blog.findById(blogId);

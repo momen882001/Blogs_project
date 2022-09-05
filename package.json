@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev-start": "concurrently \"node index\" \"cd blogs && npm start\"",
+    "dev-start": "concurrently \"npx nodemon index\" \"cd blogs && npm start\"",
     "start": "node index",
     "test": "npx nodemon index"
   },

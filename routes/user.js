@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
 const _ = require("lodash");
+const jwt = require("jsonwebtoken");
 
 const createToken = (payload) => {
   const token = jwt.sign(payload, "temporary secret for testing");

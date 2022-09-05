@@ -10,7 +10,8 @@ main().catch((err) => console.log(err));
 
 async function main() {
   await mongoose.connect(
-    "mongodb+srv://ahmedraouf2:test1234@cluster0.e5zey.mongodb.net/blogs?retryWrites=true&w=majority"
+    "mongodb://127.0.0.1:27017/blogs"
+    // "mongodb+srv://ahmedraouf2:test1234@cluster0.e5zey.mongodb.net/blogs?retryWrites=true&w=majority"
   );
   console.log("***Connected to database***");
 }
