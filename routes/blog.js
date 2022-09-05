@@ -13,6 +13,39 @@ const validate = (user) => {
   return Schema.validate(user);
 };
 
+//get all blogs
+router.get("/blog", async (req, res) => {
+  try {
+    const blogs = await Blog.find({});
+    res.status(200).send(blogs);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//get all blogs of a user
+router.get("/blog/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const blogs = await Blog.find({ authorId: userId });
+    res.status(200).send(blogs);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//get all blogs of a user
+router.get("/blog/:neg/:blogId", async (req, res) => {
+  try {
+    const { blogId } = req.params;
+    const blog = await Blog.findById(blogId);
+    if (!blog) return res.status(404).json({ err: "Not Found!" });
+    res.status(200).send(blog);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.post("/blog", auth, async (req, res) => {
   try {
     const result = validate(req.body);
@@ -21,9 +54,9 @@ router.post("/blog", auth, async (req, res) => {
 
     const userId = req.user.id;
     const user = await User.findById(userId);
-    if (!user) return res.status(401).send("Access Denied!");
+    if (!user) return res.status(401).json({ err: "Access Denied!" });
 
-    const blog = { author: user.name, ...result.value };
+    const blog = { author: user.name, authorId: user.id, ...result.value };
 
     const new_blog = new Blog(blog);
     await new_blog.save();

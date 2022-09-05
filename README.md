@@ -23,7 +23,7 @@
 - route name: api/login
 - body: email, password
 
-## login:
+## blog:
 
 - route name: api/blog
 
