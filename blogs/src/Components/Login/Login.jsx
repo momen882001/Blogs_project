@@ -26,6 +26,8 @@ function Login() {
             console.log("posting data", response)
             navigate('/');
             localStorage.setItem("auth-token" , response.data.token)
+            localStorage.setItem("user_id" , response.data._id)
+            console.log(response.data)
         }).catch((err) => {
             setErr(err.response.data.err)
         })

@@ -63,7 +63,7 @@
 
 ### GET api/blog
 
-- param: blogId
+- param: blogId/:blogId
 - return one blog with given id
 - example:
   {\

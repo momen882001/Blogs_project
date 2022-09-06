@@ -10,6 +10,7 @@ function SignUp() {
     const [confirm_password, setConfirmPassword] = useState(null);
     const [birthdate, setBirthdate] = useState('');
     const [name, setName] = useState('');
+    const [err, setErr] = useState('');
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
@@ -26,9 +27,9 @@ function SignUp() {
             console.log("posting data", response)
             navigate('/');
             localStorage.setItem("auth-token" , response.data.token)
+            localStorage.setItem("user_id" , response.data._id)
         }).catch((err) => {
-            console.log(err)
-            console.log(err.response.data.err)
+            setErr(err.response.data.err)
         })
     };
 
@@ -53,6 +54,7 @@ function SignUp() {
                     <label htmlFor="">Password :</label>
                     <input  type="password" required placeholder="Write your password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
+                <p className="error">{err}</p>
 
                 <div className="row-signup">
                     <label htmlFor="">Confirm Password :</label>

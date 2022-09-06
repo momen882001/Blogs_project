@@ -62,11 +62,11 @@ router.post("/user", async (req, res) => {
 
     await newUser.save();
 
-    const token = createToken({ id: user._id });
+    const token = createToken({ id: newUser._doc._id });
     res.header("auth-token", token);
 
     res.status(201).send({
-      ...newUser,
+      ...newUser._doc,
       token,
     });
   } catch (err) {
