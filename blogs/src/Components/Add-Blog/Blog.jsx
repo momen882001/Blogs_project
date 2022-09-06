@@ -7,6 +7,7 @@ function Blog() {
     const [category, setCategory] = useState('');
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const [err, setErr] = useState('');
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
@@ -25,7 +26,7 @@ function Blog() {
             console.log("posting data", response)
             navigate('/User');
         }).catch((err) => {
-            console.log(err)
+           setErr(err.response.data.err)
         })
     };
 
@@ -57,6 +58,7 @@ function Blog() {
                     
                 </textarea>
                </div>
+               {err ? <p className="error-blog">{err}</p> : null}
 
                <button className="blog-btn" type="submit">Save</button>
 

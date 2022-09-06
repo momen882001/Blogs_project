@@ -1,0 +1,63 @@
+/* .user-column {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+    
+} */
+
+.user-column {
+    
+}
+
+.user-card {
+    margin: 1.5rem;
+    height: 10%;
+    overflow: hidden;
+    /* background: rgb(34,193,195); */
+    background: linear-gradient(135deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%);
+    font-family: "work sans";
+    color: black;
+}
+
+.div-user-row {
+    display: flex;
+    flex-wrap: wrap;
+    height: 25%;
+}
+
+.card-contain {
+    height: 90%;
+}
+
+.welcome-contain {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.user-btn{
+    border-radius: 25px;
+    width: 15%;
+    height: 40px;
+    margin-right: 4%;
+    margin-top: 5.5%;
+    /* margin-bottom: 10%; */
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 700;
+    background: rgb(34,193,195);
+    background: linear-gradient(90deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%);
+    border: 0px;
+    cursor: pointer;
+    transition: opacity 0.25s ease-out;
+  }
+  
+  .user-btn:hover{
+    opacity: 0.8;
+  }
+
+.user-h1 {
+    padding-left: 2.3rem;
+    padding-top: 3rem;
+}

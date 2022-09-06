@@ -7,6 +7,8 @@ function Home() {
 
     const Logout = () => {
         localStorage.removeItem("auth-token")
+        localStorage.removeItem("user_id")
+        localStorage.removeItem("author")
         console.log("removed")
         window.location.reload();
     }

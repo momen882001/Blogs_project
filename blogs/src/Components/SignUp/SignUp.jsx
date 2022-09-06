@@ -28,6 +28,7 @@ function SignUp() {
             navigate('/');
             localStorage.setItem("auth-token" , response.data.token)
             localStorage.setItem("user_id" , response.data._id)
+            localStorage.setItem("author" , response.data.name)
         }).catch((err) => {
             setErr(err.response.data.err)
         })
@@ -54,7 +55,7 @@ function SignUp() {
                     <label htmlFor="">Password :</label>
                     <input  type="password" required placeholder="Write your password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
-                <p className="error">{err}</p>
+                {/* {err !== undefined ? <p className="confirm-pass">{err}</p> : null } */}
 
                 <div className="row-signup">
                     <label htmlFor="">Confirm Password :</label>

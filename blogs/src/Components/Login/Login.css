@@ -16,7 +16,7 @@ html{
   min-width: 300px;
   max-height: 700px;
   width: 30%;
-  height: 85%;
+  height: 90%;
   position: absolute ;
   top: 50%;
   left: 50%;
@@ -100,7 +100,7 @@ html{
 
 .error {
     font-size:x-small;
-    color: rgba(34,193,195,1);
+    color: rgb(195, 34, 34);
     font-weight:500;
 }
 

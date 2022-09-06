@@ -72,7 +72,7 @@
    "authorId": "6316107d831fa86d15c7505c",\
    "title": "mooo is good",\
    "body": "you must do sport",\
-   "category": "sport",\
+   "category": "sports",\
    "comments": [],\
    "createdAt": "2022-09-05T15:44:01.340Z",\
    "updatedAt": "2022-09-05T15:44:01.340Z",\
