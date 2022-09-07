@@ -78,3 +78,18 @@
    "updatedAt": "2022-09-05T15:44:01.340Z",\
    "\*\*v": 0\
    },
+
+### PUT api/blog/:id
+
+- params: blog id
+- header: auth-token
+- body: title, category, body
+
+### DELETE api/blog/:id
+
+- params: blog id
+- header: auth-token
+
+### DELETE api/blog
+
+- header: auth-token

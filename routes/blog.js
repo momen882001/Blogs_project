@@ -37,6 +37,7 @@ router.get("/blog/:blogId", async (req, res) => {
   }
 });
 
+//create blog
 router.post("/blog", auth, async (req, res) => {
   try {
     const result = validate(req.body);
@@ -55,6 +56,56 @@ router.post("/blog", auth, async (req, res) => {
     res.status(201).json({ message: "Blog created!" });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+//update one blog
+router.put("/blog/:id", auth, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = validate(req.body);
+    if (result.error)
+      return res.status(400).json({ err: result.error.details[0].message });
+    const updates = result.value;
+
+    const userId = req.user.id;
+
+    const blog = await Blog.findOneAndUpdate(
+      { _id: id, authorId: userId },
+      updates
+    );
+    if (!blog) return res.status(404).json({ err: "Not Found!" });
+
+    res.status(200).json({ message: "Blog updated!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//delete one blog
+router.delete("/blog/:id", auth, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
+    const blog = await Blog.findOneAndDelete({ _id: id, authorId: userId });
+    if (!blog) return res.status(404).json({ err: "Not Found!" });
+    res.sendStatus(200);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
+//delete all user's blogs
+router.delete("/blog", auth, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const blog = await Blog.deleteMany({ authorId: userId });
+    if (!blog) return res.status(404).json({ err: "Not Found!" });
+    res.sendStatus(200);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
   }
 });
 

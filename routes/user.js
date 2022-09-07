@@ -30,13 +30,6 @@ const validate = (user) => {
   return Schema.validate(user);
 };
 
-router.delete("/user", (req, res) => {
-  User.deleteMany({}, (err) => {
-    if (err) throw err;
-    res.sendStatus(200);
-  });
-});
-
 router.post("/user", async (req, res) => {
   try {
     const result = validate(req.body);
@@ -72,6 +65,17 @@ router.post("/user", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
+  }
+});
+
+router.delete("/user", (req, res) => {
+  try {
+    User.deleteMany({}, (err) => {
+      if (err) throw err;
+      res.sendStatus(200);
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
