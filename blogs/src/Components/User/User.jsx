@@ -15,6 +15,7 @@ import Button from 'react-bootstrap/Button';
 function User() {
 
     const [data,setData] = useState([]);
+    
     useEffect(() => {
        axios.get(`/blog/?userId=${localStorage.getItem("user_id")}`)
        .then((response) => {
@@ -23,7 +24,6 @@ function User() {
            console.log(response)
        }).catch((err) => {
            console.log(err)
-
        })
     }, [])
 
