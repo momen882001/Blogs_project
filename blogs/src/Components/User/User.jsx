@@ -9,6 +9,7 @@ import travel from '../assets/pexels-sheila-731217.jpg'
 import development from '../assets/pexels-lukas-574071.jpg'
 import sports from '../assets/pexels-pixabay-235922.jpg'
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 
 function User() {
@@ -19,17 +20,50 @@ function User() {
        .then((response) => {
            console.log("Getting data", response.data)
            setData(response.data)
+           console.log(response)
        }).catch((err) => {
            console.log(err)
+
        })
     }, [])
+
+    const Delete = (id) => {
+        axios.delete(`/blog/${id}`, {
+            headers:{
+                "auth-token" : localStorage.getItem("auth-token")
+            }
+        })
+    .then((response) => {
+        console.log("Deleting data", response)
+        console.log(id)
+        window.location.reload();
+    }).catch((err) => {
+        // if(err === 500)
+        console.log(err.respons.data.status)
+    })
+    }
+
+    const Clear = () => {
+        axios.delete('/blog', {
+            headers:{
+                "auth-token" : localStorage.getItem("auth-token")
+            }
+        })
+    .then((response) => {
+        console.log("Clearing data", response)
+        window.location.reload();
+    }).catch((err) => {
+        // if(err === 500)
+        console.log(err.respons.data.status)
+    })
+    }
 
     const arr = data.map((data,index) => {
         console.log(index)
         return(
             <>
             
-            <Col id="user-column" className="col-4"  >
+            <Col id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
                 <div className="card-contain">
                  <Card className="user-card" style={{height:"100%",}}>
                  
@@ -43,6 +77,7 @@ function User() {
                    <Card.Body >
                    <Card.Title>{data.title}</Card.Title>
                    <Card.Text>{data.body}</Card.Text>
+                   <Button variant="primary" onClick={() => Delete(data._id)}>Delete</Button>
                    </Card.Body>
                  </Card>
                  </div>
@@ -56,10 +91,13 @@ function User() {
         <div className="user-contain">
             <div className="welcome-contain">
             <h1 className="user-h1">Welcome,{localStorage.getItem("author")}</h1>
+            <Link to="/blog" style={{textDecoration:"none", paddingRight:"0"}}>
             <button className="user-btn" type="submit">
-                <Link to="/blog" style={{textDecoration:"none"}}>
                 Add-Blog
-                </Link>
+                </button>
+            </Link>
+            <button className="user-btn" type="submit" onClick={() => Clear()} >
+                Clear
                 </button>
             </div>
         <Row style={{margin : "0", padding:"0" }}>
