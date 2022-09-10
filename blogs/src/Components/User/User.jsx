@@ -58,6 +58,10 @@ function User() {
     })
     }
 
+//    function Blog_idStore(id) {
+//        console.log(id)
+//    }
+
     const arr = data.map((data,index) => {
         console.log(index)
         return(
@@ -78,6 +82,11 @@ function User() {
                    <Card.Title>{data.title}</Card.Title>
                    <Card.Text>{data.body}</Card.Text>
                    <Button variant="primary" onClick={() => Delete(data._id)}>Delete</Button>
+                   <Link to="/Edit" style={{textDecoration:"none", paddingRight:"0"}}>
+                   <Link to={`/blog/edit/${data._id}`}>   
+                   <Button variant="primary">Edit</Button>
+                   </Link>
+                   </Link>
                    </Card.Body>
                  </Card>
                  </div>
@@ -91,7 +100,7 @@ function User() {
         <div className="user-contain">
             <div className="welcome-contain">
             <h1 className="user-h1">Welcome,{localStorage.getItem("author")}</h1>
-            <Link to="/blog" style={{textDecoration:"none", paddingRight:"0"}}>
+            <Link to="/blog" style={{textDecoration:"none", display:"inline-block"}}>
             <button className="user-btn" type="submit">
                 Add-Blog
                 </button>
@@ -108,5 +117,6 @@ function User() {
         </div>
     )
 }
+
 
 export default User

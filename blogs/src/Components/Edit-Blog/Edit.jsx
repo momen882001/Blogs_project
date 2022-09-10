@@ -1,20 +1,40 @@
-import React , {useState} from 'react'
-import './Blog.css'
+import React , {useState,useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from '../API/axios'
+import {useParams} from 'react-router-dom'
 
-function Blog() {
+
+function Edit() {
+
     const [category, setCategory] = useState('');
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [err, setErr] = useState('');
     const navigate = useNavigate();
+    const {blog_id} = useParams()
 
-    const onSubmit = (e) => {
+
+    useEffect(() => {
+        axios.get(`/blog/${blog_id}`)
+        .then((response) => {
+            console.log("Getting data", response.data)
+            setTitle(response.data.title)
+            setCategory(response.data.category)
+            setBody(response.data.body)
+        }).catch((err) => {
+            console.log(err)
+        })
+     }, [blog_id])
+
+     
+
+    
+
+    const edit = (e) => {
         console.log(category,title,body)
         e.preventDefault()
 
-        axios.post('/blog', {
+        axios.put(`/blog/${blog_id}`, {
            category,
            title,
            body
@@ -23,18 +43,20 @@ function Blog() {
                 "auth-token" : localStorage.getItem("auth-token")
             }
         }).then((response) => {
-            console.log("posting data", response)
+            console.log("Editting data", response)
             navigate('/User');
         }).catch((err) => {
            setErr(err.response.data.err)
         })
     };
 
+    
+
     return (
         <div className="blog">
-            <form className="blog-form" onSubmit={onSubmit}>
+            <form className="blog-form" onSubmit={edit}>
 
-                <h1 className="h1-blog">Add Blog</h1>
+                <h1 className="h1-blog">Edit Blog</h1>
 
                <div className="row-blog">
                <label htmlFor="blog-names">Choose Category:</label>
@@ -61,7 +83,7 @@ function Blog() {
                </div>
                {err ? <p className="error-blog">{err}</p> : null}
 
-               <button className="blog-btn" type="submit">Save</button>
+               <button className="blog-btn" type="submit">Edit</button>
 
 
             </form>
@@ -69,4 +91,4 @@ function Blog() {
     )
 }
 
-export default Blog
+export default Edit
