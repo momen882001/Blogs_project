@@ -9,7 +9,6 @@ import travel from '../assets/pexels-sheila-731217.jpg'
 import development from '../assets/pexels-lukas-574071.jpg'
 import sports from '../assets/pexels-pixabay-235922.jpg'
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 
 
 function User() {
@@ -68,25 +67,26 @@ function User() {
             <>
             
             <Col id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
-                <div className="card-contain">
+                <div className="card-contain shadow">
                  <Card className="user-card" style={{height:"100%",}}>
-                 
-                   { data.category === "Shopping" ? (<Card.Img variant="top" src={shopping} style={{height:"12rem"}} />) 
-                   : data.category === "Art" ? (<Card.Img variant="top" src={art} style={{height:"12rem"}}/>) 
-                   : data.category === "Development" ? (<Card.Img variant="top" src={development} style={{height:"12rem"}}/>)
-                   : data.category === "Sports" ? (<Card.Img variant="top" src={sports} style={{height:"12rem"}}/>)
-                   : data.category === "Travel" ? (<Card.Img variant="top" src={travel} style={{height:"12rem"}}/>)
+                 <div className="overflow">
+                   { data.category === "Shopping" ? (<Card.Img  className="card-img-top" variant="top" src={shopping} style={{height:"12rem"}} />) 
+                   : data.category === "Art" ? (<Card.Img className="card-img-top"  variant="top" src={art} style={{height:"12rem"}}/>) 
+                   : data.category === "Development" ? (<Card.Img className="card-img-top" variant="top" src={development} style={{height:"12rem"}}/>)
+                   : data.category === "Sports" ? (<Card.Img className="card-img-top" variant="top" src={sports} style={{height:"12rem"}}/>)
+                   : data.category === "Travel" ? (<Card.Img className="card-img-top" variant="top" src={travel} style={{height:"12rem"}}/>)
                    : null}
+                   </div>
                    <Card.Header>{data.category}</Card.Header>
-                   <Card.Body >
-                   <Card.Title>{data.title}</Card.Title>
+                   <Card.Body className="text-dark" >
+                   <Card.Title >{data.title}</Card.Title>
                    <Card.Text>{data.body}</Card.Text>
-                   <Button variant="primary" onClick={() => Delete(data._id)}>Delete</Button>
-                   <Link to="/Edit" style={{textDecoration:"none", paddingRight:"0"}}>
-                   <Link to={`/blog/edit/${data._id}`}>   
-                   <Button variant="primary">Edit</Button>
+                   <div className="buttons-contain">
+                   <div className="btn btn-outline-success" onClick={() => Delete(data._id)}>Delete</div>
+                   <Link to={`/blog/edit/${data._id}`} >   
+                   <div className="btn btn-outline-success">Edit</div>
                    </Link>
-                   </Link>
+                   </div>
                    </Card.Body>
                  </Card>
                  </div>

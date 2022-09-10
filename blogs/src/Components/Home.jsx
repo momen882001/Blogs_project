@@ -45,16 +45,15 @@ function Home() {
             <Col id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
                 <div className="card-contain">
                  <Card className="user-card" style={{height:"100%",}}>
-                 
+                   <div className="overflow">
                    { data.category === "Shopping" ? (<Card.Img variant="top" src={shopping} style={{height:"12rem"}} />) 
                    : data.category === "Art" ? (<Card.Img variant="top" src={art} style={{height:"12rem"}}/>) 
                    : data.category === "Development" ? (<Card.Img variant="top" src={development} style={{height:"12rem"}}/>)
                    : data.category === "Sports" ? (<Card.Img variant="top" src={sports} style={{height:"12rem"}}/>)
                    : data.category === "Travel" ? (<Card.Img variant="top" src={travel} style={{height:"12rem"}}/>)
                    : null}
-                   {/* <Card.Header>{author}</Card.Header> */}
+                   </div>
                    <Card.Header>{data.category}</Card.Header>
-                   {/* <Card.Header>{localStorage.getItem("author")}</Card.Header> */}
                    <Card.Body >
                    <Card.Title>{data.title}</Card.Title>
                    <Card.Text>{data.body}</Card.Text>

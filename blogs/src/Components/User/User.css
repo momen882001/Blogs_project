@@ -1,13 +1,6 @@
-/* .user-column {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    
-    
-} */
 
-.user-column {
-    
+body {
+background: linear-gradient(#e5e5e5,#ffff,#e5e5e5);
 }
 
 .user-card {
@@ -15,10 +8,40 @@
     height: 10%;
     overflow: hidden;
     /* background: rgb(34,193,195); */
-    background: linear-gradient(135deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%);
     font-family: "work sans";
     color: black;
+    transition: 0.5s ease;
 }
+
+.user-card:hover {
+    box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+}
+
+.card-img-top {
+    transform: scale(1);
+    transition: transform 0.5s ease;
+}
+
+.card-img-top:hover {
+    transform: scale(1.8);
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+.card-header {
+    text-align: center;
+    font-size: larger;
+    font-family: cursive;
+    font-weight: 600;
+}
+
+.buttons-contain {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .div-user-row {
     display: flex;
