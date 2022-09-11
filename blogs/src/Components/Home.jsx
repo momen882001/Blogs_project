@@ -27,6 +27,11 @@ function Home() {
         })
      }, [])
 
+    //  useEffect(() => {
+    //     AOS.init();
+    //     AOS.refresh();
+    //   }, []);
+
     
    
 

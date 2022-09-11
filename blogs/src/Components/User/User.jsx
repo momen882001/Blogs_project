@@ -14,6 +14,12 @@ import { Link } from "react-router-dom";
 function User() {
 
     const [data,setData] = useState([]);
+    const [isReadMore,setReadMore] = useState(false);
+
+    const toggle = () => {
+        setReadMore(!isReadMore)
+        console.log(isReadMore)
+    }
     
     useEffect(() => {
        axios.get(`/blog/?userId=${localStorage.getItem("user_id")}`)
@@ -66,7 +72,7 @@ function User() {
         return(
             <>
             
-            <Col id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
+            <Col key={index} id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
                 <div className="card-contain">
                  <Card className="user-card" style={{height:"100%",}}>
                  <div className="overflow">
@@ -80,7 +86,9 @@ function User() {
                    <Card.Header>{data.category}</Card.Header>
                    <Card.Body className="text-dark" >
                    <Card.Title >{data.title}</Card.Title>
-                   <Card.Text>{data.body}</Card.Text>
+                   <Card.Text>{isReadMore ? data.body : data.body.substr(0,50)}
+                   <div className="btn btn-outline-success" onClick={toggle}>{isReadMore ? 'Read Less' : 'Read More'}</div>
+                   </Card.Text>
                    <div className="buttons-contain">
                    <div className="btn btn-outline-success" onClick={() => Delete(data._id)}>Delete</div>
                    <Link to={`/blog/edit/${data._id}`} >   
