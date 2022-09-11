@@ -23,7 +23,7 @@ background: linear-gradient(#e5e5e5,#ffff,#e5e5e5);
 }
 
 .card-img-top:hover {
-    transform: scale(1.8);
+    transform: scale(1.5);
 }
 
 .overflow {

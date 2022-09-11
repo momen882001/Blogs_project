@@ -1,6 +1,4 @@
 import React , {useState,useEffect} from 'react'
-import { Link } from "react-router-dom";
-import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import shopping from './assets/pexels-cottonbro-4068314.jpg'
@@ -9,6 +7,7 @@ import travel from './assets/pexels-sheila-731217.jpg'
 import development from './assets/pexels-lukas-574071.jpg'
 import sports from './assets/pexels-pixabay-235922.jpg'
 import axios from './API/axios'
+import NavBar from './navBar/NavBar';
 
 function Home() {
 
@@ -29,13 +28,7 @@ function Home() {
      }, [])
 
     
-    const Logout = () => {
-        localStorage.removeItem("auth-token")
-        localStorage.removeItem("user_id")
-        localStorage.removeItem("author")
-        console.log("removed")
-        window.location.reload();
-    }
+   
 
     const allArr = data.map((data,index) => {
         console.log(index)
@@ -68,49 +61,16 @@ function Home() {
 
     return (
         <div className="home">
-            <Container>
-                <Row>
-                    { localStorage["auth-token"] !== undefined ?
-               
-               <Col>
-               <button onClick={Logout}>Logout</button>
-               </Col>
-
-                    :
-                    
-                    <>
-                    <Col>
-
-                        <Link to="/login">
-                            Login
-            </Link>
-                    </Col>
-
-                    <Col>
-                        <Link to="/signup">
-                            signup
-            </Link>
-                    </Col> 
-                    </>
-                    
-                    }
-
-
-                    <Col>
-                        <button>
-                            <Link to="/blog">
-                                Add Blog
-                </Link>
-                        </button>
-                    </Col>
-
-                </Row>
+            
+                
+        <NavBar/>
+       
         <Row style={{margin : "0", padding:"0" }}>
         <div className="div-user-row">
             {allArr}
         </div>
         </Row>
-            </Container>
+            
 
         </div>
     )

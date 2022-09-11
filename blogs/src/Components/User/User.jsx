@@ -67,7 +67,7 @@ function User() {
             <>
             
             <Col id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
-                <div className="card-contain shadow">
+                <div className="card-contain">
                  <Card className="user-card" style={{height:"100%",}}>
                  <div className="overflow">
                    { data.category === "Shopping" ? (<Card.Img  className="card-img-top" variant="top" src={shopping} style={{height:"12rem"}} />) 
