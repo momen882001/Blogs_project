@@ -7,6 +7,7 @@ import SignUp from './Components/SignUp/SignUp';
 import Blog from './Components/Add-Blog/Blog.jsx'
 import User from './Components/User/User';
 import Edit from './Components/Edit-Blog/Edit';
+import ReadMore from './Components/ReadMorePage/ReadMore';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
          <Route path="/blog" element={<Blog/>}/>
          <Route path="/User" element={<User/>}/>
          <Route path="/blog/edit/:blog_id" element={<Edit/>}/>
+         <Route path="/blog/readmore/:blog_id" element={<ReadMore/>}/>
         </Routes>
       </Router>
     </div>

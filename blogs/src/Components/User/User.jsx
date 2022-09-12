@@ -14,12 +14,12 @@ import { Link } from "react-router-dom";
 function User() {
 
     const [data,setData] = useState([]);
-    const [isReadMore,setReadMore] = useState(false);
+    // const [isReadMore,setReadMore] = useState(false);
 
-    const toggle = () => {
-        setReadMore(!isReadMore)
-        console.log(isReadMore)
-    }
+    // const toggle = () => {
+    //     setReadMore(!isReadMore)
+    //     console.log(isReadMore)
+    // }
     
     useEffect(() => {
        axios.get(`/blog/?userId=${localStorage.getItem("user_id")}`)
@@ -31,6 +31,7 @@ function User() {
            console.log(err)
        })
     }, [])
+
 
     const Delete = (id) => {
         axios.delete(`/blog/${id}`, {
@@ -86,8 +87,11 @@ function User() {
                    <Card.Header>{data.category}</Card.Header>
                    <Card.Body className="text-dark" >
                    <Card.Title >{data.title}</Card.Title>
-                   <Card.Text>{isReadMore ? data.body : data.body.substr(0,50)}
-                   <div className="btn btn-outline-success" onClick={toggle}>{isReadMore ? 'Read Less' : 'Read More'}</div>
+                   <Card.Text>
+                    {data.body}
+                    <Link to={`/blog/readmore/${data._id}`}>
+                   <div className="btn btn-outline-success">Read More</div>
+                   </Link>
                    </Card.Text>
                    <div className="buttons-contain">
                    <div className="btn btn-outline-success" onClick={() => Delete(data._id)}>Delete</div>
