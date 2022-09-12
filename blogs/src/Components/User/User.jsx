@@ -88,9 +88,9 @@ function User() {
                    <Card.Body className="text-dark" >
                    <Card.Title >{data.title}</Card.Title>
                    <Card.Text>
-                    {data.body}
+                    {data.body.substr(0,50)}
                     <Link to={`/blog/readmore/${data._id}`}>
-                   <div className="btn btn-outline-success">Read More</div>
+                   <div className="btn" style={{ paddingLeft: "5px", border: "transparent" }}>... Read More</div>
                    </Link>
                    </Card.Text>
                    <div className="buttons-contain">

@@ -28,7 +28,6 @@ function Edit() {
 
      
 
-    
 
     const edit = (e) => {
         console.log(category,title,body)

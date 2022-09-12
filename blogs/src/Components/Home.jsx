@@ -8,6 +8,7 @@ import development from './assets/pexels-lukas-574071.jpg'
 import sports from './assets/pexels-pixabay-235922.jpg'
 import axios from './API/axios'
 import NavBar from './navBar/NavBar';
+import { Link } from "react-router-dom";
 
 function Home() {
 
@@ -54,7 +55,11 @@ function Home() {
                    <Card.Header>{data.category}</Card.Header>
                    <Card.Body >
                    <Card.Title>{data.title}</Card.Title>
-                   <Card.Text>{data.body}</Card.Text>
+                   <Card.Text>{data.body.substr(0,50)}
+                   <Link to={`/blog/readmore/${data._id}`}>
+                   <div className="btn" style={{ paddingLeft: "5px", border: "transparent" }}>... Read More</div>
+                   </Link>
+                   </Card.Text>
                    </Card.Body>
                  </Card>
                  </div>
