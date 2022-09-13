@@ -37,7 +37,7 @@ function User() {
     const Delete = (id) => {
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "Once deleted, you will not be able to recover this blog again!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -60,7 +60,7 @@ function User() {
                 icon: "success",
               });
             } else {
-              swal("Your imaginary file is safe!",{
+              swal("Your blog is safe!",{
                 icon: "success",
               });
             }
@@ -71,7 +71,7 @@ function User() {
 
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "Once deleted,you will not be able to recover your blogs again!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -93,7 +93,7 @@ function User() {
                 icon: "success",
               });
             } else {
-              swal("Your imaginary file is safe!", {
+              swal("Your blogs is safe!", {
                 icon: "success",
               });
             }
