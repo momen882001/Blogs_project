@@ -9,6 +9,7 @@ import travel from '../assets/pexels-sheila-731217.jpg'
 import development from '../assets/pexels-lukas-574071.jpg'
 import sports from '../assets/pexels-pixabay-235922.jpg'
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
 
 
 function User() {
@@ -34,19 +35,36 @@ function User() {
 
 
     const Delete = (id) => {
-        axios.delete(`/blog/${id}`, {
-            headers:{
-                "auth-token" : localStorage.getItem("auth-token")
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal( axios.delete(`/blog/${id}`, {
+                headers:{
+                    "auth-token" : localStorage.getItem("auth-token")
+                }
+            })
+        .then((response) => {
+            console.log("Deleting data", response)
+            console.log(id)
+            window.location.reload();
+        }).catch((err) => {
+            // if(err === 500)
+            console.log(err.respons.data.status)
+        }), {
+                icon: "success",
+              });
+            } else {
+              swal("Your imaginary file is safe!");
             }
-        })
-    .then((response) => {
-        console.log("Deleting data", response)
-        console.log(id)
-        window.location.reload();
-    }).catch((err) => {
-        // if(err === 500)
-        console.log(err.respons.data.status)
-    })
+          });
+
+       
     }
 
     const Clear = () => {
@@ -67,6 +85,8 @@ function User() {
 //    function Blog_idStore(id) {
 //        console.log(id)
 //    }
+
+  
 
     const arr = data.map((data,index) => {
         console.log(index)

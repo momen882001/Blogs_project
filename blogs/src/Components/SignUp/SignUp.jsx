@@ -1,5 +1,5 @@
-import React , {useState} from 'react'
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import { useNavigate, Link } from "react-router-dom";
 import axios from '../API/axios'
 import './SignUp.css'
 
@@ -14,7 +14,7 @@ function SignUp() {
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
-        console.log(name,email, password,confirm_password,birthdate)
+        console.log(name, email, password, confirm_password, birthdate)
         e.preventDefault()
 
         axios.post('/user', {
@@ -26,9 +26,9 @@ function SignUp() {
         }).then((response) => {
             console.log("posting data", response)
             navigate('/');
-            localStorage.setItem("auth-token" , response.data.token)
-            localStorage.setItem("user_id" , response.data._id)
-            localStorage.setItem("author" , response.data.name)
+            localStorage.setItem("auth-token", response.data.token)
+            localStorage.setItem("user_id", response.data._id)
+            localStorage.setItem("author", response.data.name)
         }).catch((err) => {
             setErr(err.response.data.err)
         })
@@ -37,42 +37,48 @@ function SignUp() {
     return (
         <div className="signup">
             <form className="signup-form" onSubmit={onSubmit}>
-            <h1 className="h1-signup">SignUp</h1>
+                <h1 className="h1-signup">SignUp</h1>
 
                 <div className="signup-con">
 
-                <div className="row-signup">
-                    <label htmlFor="">Name :</label>
-                    <input autoFocus type="text" required placeholder="Write your name" value={name} onChange={(e) => setName(e.target.value)}  />
+                    <div className="row-signup">
+                        <label htmlFor="">Name :</label>
+                        <input autoFocus type="text" required placeholder="Write your name" value={name} onChange={(e) => setName(e.target.value)} />
+                    </div>
+
+                    <div className="row-signup">
+                        <label htmlFor="">Email :</label>
+                        <input type="email" required placeholder="Write your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+
+                    <div className="row-signup">
+                        <label htmlFor="">Password :</label>
+                        <input type="password" required placeholder="Write your password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                    {/* {err !== undefined ? <p className="confirm-pass">{err}</p> : null } */}
+
+                    <div className="row-signup">
+                        <label htmlFor="">Confirm Password :</label>
+                        <input type="password" required placeholder="Write your password again" value={confirm_password} onChange={(e) => setConfirmPassword(e.target.value)} />
+                    </div>
+
+                    <div className="row-signup">
+                        <label htmlFor="">Birthdate :</label>
+                        <input type="date" required placeholder="Write your Birthdate" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} />
+                    </div>
+
+                    {(password === confirm_password || confirm_password === null) && err !== undefined ? <p className="confirm-pass">{err}</p> : <p className="confirm-pass">Write Confirm Password agian</p>}
+
+
                 </div>
 
-                <div className="row-signup">
-                    <label htmlFor="">Email :</label>
-                    <input  type="email" required placeholder="Write your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <div className="signup-paragraph-down">
+                    <button type="submit" className="signup-btn">SignUp</button>
+
+                    <Link to="/login" style={{ textDecorationColor: "rgba(11,83,148,1)" }}>
+                        <p className="p-login">Have already an account?</p>
+                    </Link>
                 </div>
-
-                <div className="row-signup">
-                    <label htmlFor="">Password :</label>
-                    <input  type="password" required placeholder="Write your password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-                {/* {err !== undefined ? <p className="confirm-pass">{err}</p> : null } */}
-
-                <div className="row-signup">
-                    <label htmlFor="">Confirm Password :</label>
-                    <input  type="password" required placeholder="Write your password again" value={confirm_password} onChange={(e) => setConfirmPassword(e.target.value)} />
-                </div>
-
-                <div className="row-signup">
-                    <label htmlFor="">Birthdate :</label>
-                    <input type="date" required placeholder="Write your Birthdate" value={birthdate} onChange={(e) => setBirthdate(e.target.value)}/>
-                </div>
-
-               { password === confirm_password || confirm_password === null ? null :  <p className="confirm-pass">Write Confirm Password agian</p>  }
-                 
-
-                </div>
-
-                <button type="submit" className="signup-btn">SignUp</button>
 
             </form>
         </div>

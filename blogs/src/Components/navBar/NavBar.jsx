@@ -20,6 +20,7 @@ function NavBar() {
           {localStorage["auth-token"] !== undefined ?
           <ul className="nav-links">
               <Link style={{textDecoration:"none"}} to="/blog"><li>Add-Blog</li></Link>
+              <Link style={{textDecoration:"none"}} to="/User"><li>My-Blogs</li></Link>
               <Link style={{textDecoration:"none"}} to="" onClick={Logout}><li>Logout</li></Link>
           </ul>
           :

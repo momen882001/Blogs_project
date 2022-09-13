@@ -53,18 +53,18 @@ function Login() {
 
                 <button className="login-btn" type="submit">Login</button>
                 <div id="alternativeLogin">
-                <label>Or sign in with:</label>
+                <label className="before-google">Or sign in with:</label>
                 <div id="iconGroup">
-                <FontAwesomeIcon icon={faGoogle} style={{color:"rgba(34,193,195,1)", cursor:"pointer"}} size="lg"/>
+                <FontAwesomeIcon icon={faGoogle} style={{color:"rgba(11,83,148,1)", cursor:"pointer"}} size="lg"/>
                 </div>
                 <div  className="links-contain">
                     
-                    <Link to="/signup">
-                    <p className="p-login">Create an account</p>
+                    <Link to="/signup" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
+                    <p className="p-login">Create an account?</p>
                     </Link>
                     
                     
-                    <Link to="/">
+                    <Link to="/" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
                     <p className="p-login">Forget password?</p>
                     </Link>
                     

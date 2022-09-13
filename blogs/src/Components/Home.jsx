@@ -28,14 +28,9 @@ function Home() {
         })
      }, [])
 
-    //  useEffect(() => {
-    //     AOS.init();
-    //     AOS.refresh();
-    //   }, []);
+     
 
     
-   
-
     const allArr = data.map((data,index) => {
         console.log(index)
         return(
