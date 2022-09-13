@@ -1,6 +1,7 @@
 
 body {
-background: linear-gradient(#e5e5e5,#ffff,#e5e5e5);
+/* background: linear-gradient(#e5e5e5); */
+background-color: #e5e5e5 ;
 }
 
 .user-card {

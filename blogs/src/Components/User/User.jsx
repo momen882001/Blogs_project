@@ -60,31 +60,45 @@ function User() {
                 icon: "success",
               });
             } else {
-              swal("Your imaginary file is safe!");
+              swal("Your imaginary file is safe!",{
+                icon: "success",
+              });
             }
           });
-
-       
     }
 
     const Clear = () => {
-        axios.delete('/blog', {
-            headers:{
-                "auth-token" : localStorage.getItem("auth-token")
-            }
-        })
-    .then((response) => {
-        console.log("Clearing data", response)
-        window.location.reload();
-    }).catch((err) => {
-        // if(err === 500)
-        console.log(err.respons.data.status)
-    })
-    }
 
-//    function Blog_idStore(id) {
-//        console.log(id)
-//    }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal(axios.delete('/blog', {
+                headers:{
+                    "auth-token" : localStorage.getItem("auth-token")
+                }
+            })
+        .then((response) => {
+            console.log("Clearing data", response)
+            window.location.reload();
+        }).catch((err) => {
+            // if(err === 500)
+            console.log(err.respons.data.status)
+        }), {
+                icon: "success",
+              });
+            } else {
+              swal("Your imaginary file is safe!", {
+                icon: "success",
+              });
+            }
+          });
+    }
 
   
 
