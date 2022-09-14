@@ -151,7 +151,7 @@ const SideBar = () => {
                   exit="hidden"
                   className="logo"
                 >
-                  DoSomeCoding
+                  Htwl3 Wrbna
                 </motion.h1>
               )}
             </AnimatePresence>
