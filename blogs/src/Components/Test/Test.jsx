@@ -9,6 +9,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import './Test.css'
+import User from "../User/User";
 const routes = [
   {
     path: "/",
@@ -87,7 +88,7 @@ const routes = [
   },
 ];
 
-const SideBar = ({ children }) => {
+const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const inputAnimation = {
@@ -129,7 +130,7 @@ const SideBar = ({ children }) => {
       <div className="main-container">
         <motion.div
           animate={{
-            width: isOpen ? "200px" : "45px",
+            width: isOpen ? "385px" : "65px",
 
             transition: {
               duration: 0.5,
@@ -138,6 +139,7 @@ const SideBar = ({ children }) => {
             },
           }}
           className={`sidebar `}
+        //   style={{    width: "300px"}}
         >
           <div className="top_section">
             <AnimatePresence>
@@ -214,6 +216,7 @@ const SideBar = ({ children }) => {
             })}
           </section>
         </motion.div>
+        <User/>
       </div>
     </>
   );

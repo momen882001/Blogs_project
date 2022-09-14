@@ -24,7 +24,7 @@ function Blog() {
             }
         }).then((response) => {
             console.log("posting data", response)
-            navigate('/User');
+            navigate('/test');
         }).catch((err) => {
            setErr(err.response.data.err)
         })
@@ -70,7 +70,7 @@ function Blog() {
                     </Link>
                     
                     
-                    <Link to="/User" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
+                    <Link to="/test" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
                     <p className="p-login">My-Blogs</p>
                     </Link>
                     

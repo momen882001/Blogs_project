@@ -19,9 +19,11 @@
   
   /* Sidebar */
   .sidebar {
-    background: rgb(0, 7, 61);
+    /* background: rgb(0, 7, 61); */
+    /* background-image: linear-gradient( 109.1deg, rgba(139,13,98,1) 17.5%, rgba(11,83,148,1) 100.2% ); */
+    background-color: rgba(11,83,148,1);
     color: white;
-    height: 100vh;
+    height: auto;
     overflow-y: auto;
   }
   

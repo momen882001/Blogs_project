@@ -107,8 +107,8 @@ function User() {
         return(
             <>
             
-           
-                <div className="card-contain" key={index}>
+            <Col  key={index}  id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
+                <div className="card-contain">
                  <Card className="user-card" style={{height:"100%",}}>
                  <div className="overflow">
                    { data.category === "Shopping" ? (<Card.Img  className="card-img-top" variant="top" src={shopping} style={{height:"12rem"}} />) 
@@ -136,6 +136,8 @@ function User() {
                    </Card.Body>
                  </Card>
                  </div>
+                 </Col>
+
             
             
             </>
@@ -158,9 +160,7 @@ function User() {
 
         <Row style={{margin : "0", padding:"0" }}>
         <div className="div-user-row" style={{marginTop: "3%"}}>
-        <Col  id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
             {arr}
-        </Col>
         </div>
         </Row>
         </div>
