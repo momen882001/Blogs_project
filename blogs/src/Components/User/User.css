@@ -4,6 +4,7 @@ body {
 background-color: #e5e5e5 ;
 }
 
+
 .user-card {
     margin: 1.5rem;
     height: 10%;
@@ -85,4 +86,5 @@ background-color: #e5e5e5 ;
 .user-h1 {
     padding-left: 2.3rem;
     padding-top: 1.5rem;
+    font-family: 'Roboto', sans-serif;
 }

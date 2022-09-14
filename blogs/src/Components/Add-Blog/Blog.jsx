@@ -1,6 +1,6 @@
 import React , {useState} from 'react'
 import './Blog.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import axios from '../API/axios'
 
 function Blog() {
@@ -62,6 +62,20 @@ function Blog() {
                {err ? <p className="error-blog">{err}</p> : null}
 
                <button className="blog-btn" type="submit">Save</button>
+
+               <div  className="links-contain">
+                    
+                    <Link to="/" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
+                    <p className="p-login">Home</p>
+                    </Link>
+                    
+                    
+                    <Link to="/User" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
+                    <p className="p-login">My-Blogs</p>
+                    </Link>
+                    
+                </div>
+
 
 
             </form>

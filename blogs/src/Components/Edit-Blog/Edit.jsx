@@ -1,5 +1,5 @@
 import React , {useState,useEffect} from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import axios from '../API/axios'
 import {useParams} from 'react-router-dom'
 
@@ -83,6 +83,19 @@ function Edit() {
                {err ? <p className="error-blog">{err}</p> : null}
 
                <button className="blog-btn" type="submit">Edit</button>
+
+               <div  className="links-contain">
+                    
+                    <Link to="/" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
+                    <p className="p-login">Home</p>
+                    </Link>
+                    
+                    
+                    <Link to="/User" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
+                    <p className="p-login">My-Blogs</p>
+                    </Link>
+                    
+                </div>
 
 
             </form>

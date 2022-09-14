@@ -107,8 +107,8 @@ function User() {
         return(
             <>
             
-            <Col key={index} id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
-                <div className="card-contain">
+           
+                <div className="card-contain" key={index}>
                  <Card className="user-card" style={{height:"100%",}}>
                  <div className="overflow">
                    { data.category === "Shopping" ? (<Card.Img  className="card-img-top" variant="top" src={shopping} style={{height:"12rem"}} />) 
@@ -136,7 +136,7 @@ function User() {
                    </Card.Body>
                  </Card>
                  </div>
-            </Col>
+            
             
             </>
         )
@@ -144,20 +144,23 @@ function User() {
 
     return (
         <div className="user-contain">
-            <div className="welcome-contain">
-            <h1 className="user-h1">Welcome,{localStorage.getItem("author")}</h1>
-            <Link to="/blog" style={{textDecoration:"none", display:"inline-block"}}>
-            <button className="user-btn" type="submit">
-                Add-Blog
-                </button>
-            </Link>
-            <button className="user-btn" type="submit" onClick={() => Clear()} >
-                Clear
-                </button>
+            <nav className="navbar">
+            <div className="container">
+            <h3 className="logo">My-Blogs</h3>
+
+            <ul className="nav-links">
+                <Link to="/blog" style={{textDecoration:"none"}}><li style={{color:"rgba(11,83,148,1)"}}>Add-Blog</li></Link>
+                <Link to="" style={{textDecoration:"none"}} onClick={() => Clear()}><li style={{color:"rgba(11,83,148,1)"}}>Clear</li></Link>
+                <Link to="/" style={{textDecoration:"none"}}><li style={{color:"rgba(11,83,148,1)"}}>Home</li></Link>
+            </ul>
             </div>
+            </nav>
+
         <Row style={{margin : "0", padding:"0" }}>
-        <div className="div-user-row">
+        <div className="div-user-row" style={{marginTop: "3%"}}>
+        <Col  id="user-column" className="col-4" xs={12} sm={6} md={6} lg={4}  >
             {arr}
+        </Col>
         </div>
         </Row>
         </div>
