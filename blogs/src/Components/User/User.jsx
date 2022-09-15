@@ -118,9 +118,9 @@ function User() {
                    : data.category === "Travel" ? (<Card.Img className="card-img-top" variant="top" src={travel} style={{height:"12rem"}}/>)
                    : null}
                    </div>
-                   <Card.Header>{data.category}</Card.Header>
+                   <Card.Header>{data.title}</Card.Header>
                    <Card.Body className="text-dark" >
-                   <Card.Title >{data.title}</Card.Title>
+                   <Card.Title >{data.category}</Card.Title>
                    <Card.Text>
                     {data.body.substr(0,50)}
                     <Link to={`/blog/readmore/${data._id}`}>
@@ -128,9 +128,9 @@ function User() {
                    </Link>
                    </Card.Text>
                    <div className="buttons-contain">
-                   <div className="btn btn-outline-success" onClick={() => Delete(data._id)}>Delete</div>
+                   <div className="btn btn-outline-danger" onClick={() => Delete(data._id)}>Delete</div>
                    <Link to={`/blog/edit/${data._id}`} >   
-                   <div className="btn btn-outline-success">Edit</div>
+                   <div className="btn btn-outline-primary">Edit</div>
                    </Link>
                    </div>
                    </Card.Body>
@@ -143,9 +143,10 @@ function User() {
             </>
         )
     })
+    console.log(arr)
 
     return (
-        <div className="user-contain">
+        <div className="user-contain" style={{width:"100%"}}>
             <nav className="navbar">
             <div className="container">
             <h3 className="logo">My-Blogs</h3>
@@ -158,8 +159,10 @@ function User() {
             </div>
             </nav>
 
+            <h2 className="author">Welcome, {localStorage.getItem("author")}</h2>
+
         <Row style={{margin : "0", padding:"0" }}>
-        <div className="div-user-row" style={{marginTop: "3%"}}>
+        <div className="div-user-row">
             {arr}
         </div>
         </Row>

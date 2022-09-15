@@ -43,7 +43,7 @@ function Edit() {
             }
         }).then((response) => {
             console.log("Editting data", response)
-            navigate('/User');
+            navigate('/sidebar/user');
         }).catch((err) => {
            setErr(err.response.data.err)
         })

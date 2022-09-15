@@ -24,7 +24,7 @@ function Blog() {
             }
         }).then((response) => {
             console.log("posting data", response)
-            navigate('/test');
+            navigate('/sidebar/user');
         }).catch((err) => {
            setErr(err.response.data.err)
         })

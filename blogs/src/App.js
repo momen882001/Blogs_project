@@ -9,7 +9,7 @@ import User from './Components/User/User';
 import Edit from './Components/Edit-Blog/Edit';
 import ReadMore from './Components/ReadMorePage/ReadMore';
 import SideBar from './Components/SideBar/SideBar';
-import Test from './Components/Test/Test';
+// import Test from './Components/SideBar/SideBar';
 
 
 function App() {
@@ -24,8 +24,7 @@ function App() {
          <Route path="/User" element={<User/>}/>
          <Route path="/blog/edit/:blog_id" element={<Edit/>}/>
          <Route path="/blog/readmore/:blog_id" element={<ReadMore/>}/>
-         <Route path="/sidebar" element={<SideBar/>}/>
-         <Route path="/test" element={<Test/>}/>
+         <Route path="/sidebar/user" element={<SideBar/>}/>
         </Routes>
       </Router>
     </div>

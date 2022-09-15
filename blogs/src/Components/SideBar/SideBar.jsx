@@ -1,74 +1,225 @@
-import React, { useState } from "react";
-import "./SideBar.css";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { SidebarData } from "./SideBarData";
-import { IconContext } from "react-icons";
-// import Admin from "../AdminPage/images/admin.png";
-// import Table from "../Table/Table";
+import { NavLink } from "react-router-dom";
+import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
+import { MdMessage } from "react-icons/md";
+import { BiAnalyse, BiSearch } from "react-icons/bi";
+import { BiCog } from "react-icons/bi";
+import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
+import { BsCartCheck } from "react-icons/bs";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import SidebarMenu from "./SidebarMenu";
+import './SideBar.css'
+import User from "../User/User";
+const routes = [
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: <FaHome />,
+  },
+  {
+    path: "/users",
+    name: "Users",
+    icon: <FaUser />,
+  },
+  {
+    path: "/messages",
+    name: "Messages",
+    icon: <MdMessage />,
+  },
+  {
+    path: "/analytics",
+    name: "Analytics",
+    icon: <BiAnalyse />,
+  },
+  {
+    path: "/file-manager",
+    name: "File Manager",
+    icon: <AiTwotoneFileExclamation />,
+    subRoutes: [
+      {
+        path: "/settings/profile",
+        name: "Profile ",
+        icon: <FaUser />,
+      },
+      {
+        path: "/settings/2fa",
+        name: "2FA",
+        icon: <FaLock />,
+      },
+      {
+        path: "/settings/billing",
+        name: "Billing",
+        icon: <FaMoneyBill />,
+      },
+    ],
+  },
+  {
+    path: "/order",
+    name: "Order",
+    icon: <BsCartCheck />,
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    icon: <BiCog />,
+    exact: true,
+    subRoutes: [
+      {
+        path: "/settings/profile",
+        name: "Profile ",
+        icon: <FaUser />,
+      },
+      {
+        path: "/settings/2fa",
+        name: "2FA",
+        icon: <FaLock />,
+      },
+      {
+        path: "/settings/billing",
+        name: "Billing",
+        icon: <FaMoneyBill />,
+      },
+    ],
+  },
+  {
+    path: "/saved",
+    name: "Saved",
+    icon: <AiFillHeart />,
+  },
+];
 
-function SideBar() {
-  const [sidebar, setSidebar] = useState(true);
+const SideBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+  const inputAnimation = {
+    hidden: {
+      width: 0,
+      padding: 0,
+      transition: {
+        duration: 0.2,
+      },
+    },
+    show: {
+      width: "140px",
+      padding: "5px 15px",
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
 
-  function showSidebar() {
-    setSidebar(!sidebar);
-    console.log("momen");
-  }
-
-  // function close() {
-  //     if(sidebar === true) {
-  //         setSidebar(false);
-  //     }
-  //     console.log('momen')
-  //  }
+  const showAnimation = {
+    hidden: {
+      width: 0,
+      opacity: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+    show: {
+      opacity: 1,
+      width: "auto",
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
 
   return (
-    <IconContext.Provider value={{ color: "black" }}>
-      <div className="navbar-admin">
-        <Link to="#" className="menu-bars">
-          <FaIcons.FaBars onClick={showSidebar} />
-        </Link>
+    <>
+      <div className="main-container">
+        <motion.div
+          animate={{
+            width: isOpen ? "231px" : "40px",
+
+            transition: {
+              duration: 0.5,
+              type: "spring",
+              damping: 10,
+            },
+          }}
+          className={`sidebar `}
+        //   style={{    width: "300px"}}
+        >
+          <div className="top_section">
+            <AnimatePresence>
+              {isOpen && (
+                <motion.h1
+                  variants={showAnimation}
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  className="logo"
+                >
+                  Htwl3 Wrbna
+                </motion.h1>
+              )}
+            </AnimatePresence>
+
+            <div className="bars">
+              <FaBars onClick={toggle} />
+            </div>
+          </div>
+          <div className="search">
+            <div className="search_icon">
+              <BiSearch />
+            </div>
+            <AnimatePresence>
+              {isOpen && (
+                <motion.input
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={inputAnimation}
+                  type="text"
+                  placeholder="Search"
+                />
+              )}
+            </AnimatePresence>
+          </div>
+          <section className="routes">
+            {routes.map((route, index) => {
+              if (route.subRoutes) {
+                return (
+                  <SidebarMenu
+                    setIsOpen={setIsOpen}
+                    route={route}
+                    showAnimation={showAnimation}
+                    isOpen={isOpen}
+                  />
+                );
+              }
+
+              return (
+                <NavLink
+                  to={route.path}
+                  key={index}
+                  className="link"
+                  activeClassName="active"
+                >
+                  <div className="icon">{route.icon}</div>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        variants={showAnimation}
+                        initial="hidden"
+                        animate="show"
+                        exit="hidden"
+                        className="link_text"
+                      >
+                        {route.name}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </NavLink>
+              );
+            })}
+          </section>
+        </motion.div>
+        <User/>
       </div>
-      <nav
-        className={sidebar ? "nav-menu active" : "nav-menu"}
-        style={{ display: sidebar === true ? "block" : "none" }}
-      >
-        <ul className="nav-menu-items">
-          <li className="navbar-toggle">
-            <Link to="#" className="menu-bars">
-              <AiIcons.AiOutlineClose />
-            </Link>
-          </li>
-          {/* <img src={Admin} alt="" /> */}
-          {SidebarData.map((item, index) => {
-            return (
-              <li key={index} className={item.cName}>
-                <Link to={item.path} className="choices">
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-      <div
-        className="akwa"
-        style={{ display: sidebar === false ? "block" : "none" }}
-      >
-        <div className="icon-flex">
-          {SidebarData.map((item, index) => {
-            return (
-              <li key={index} className="icons">
-                <Link to="/">{item.icon}</Link>
-              </li>
-            );
-          })}
-        </div>
-      </div>
-    </IconContext.Provider>
+    </>
   );
-}
+};
 
 export default SideBar;

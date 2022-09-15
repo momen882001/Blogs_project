@@ -24,7 +24,7 @@ function Login() {
             password
         }).then((response) => {
             console.log("posting data", response)
-            navigate('/');
+            navigate('/sidebar/user');
             localStorage.setItem("auth-token" , response.data.token)
             localStorage.setItem("user_id" , response.data._id)
             localStorage.setItem("author" , response.data.name)
