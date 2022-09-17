@@ -15,7 +15,7 @@ function NavBar() {
     return (
         <nav className="navbar">
             <div className="container">
-         <h3 className="logo">Blog-App</h3>
+         <h2 className="logo-navbar">Blog-App</h2>
           
           {localStorage["auth-token"] !== undefined ?
           <ul className="nav-links">

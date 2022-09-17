@@ -87,3 +87,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
       swal("Your imaginary file is safe!");
     }
   }); -->
+
+  <!-- <script src="sweetalert2.all.min.js"></script>
+  const Swal = require('sweetalert2')
+  Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Something went wrong!',
+  footer: '<a href="">Why do I have this issue?</a>'
+}) -->

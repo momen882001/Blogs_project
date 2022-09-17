@@ -18,9 +18,9 @@ li {
     box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
 }
 
-.logo {
-    font-size: 30px;
-    margin-bottom: 1.2rem;
+.logo-navbar {
+    /* font-size: 30px; */
+    /* margin-bottom: 1.2rem; */
 }
 
 .nav-links {

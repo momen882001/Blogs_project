@@ -70,7 +70,7 @@ function Blog() {
                     </Link>
                     
                     
-                    <Link to="/test" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
+                    <Link to="/sidebar/user" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
                     <p className="p-login">My-Blogs</p>
                     </Link>
                     
