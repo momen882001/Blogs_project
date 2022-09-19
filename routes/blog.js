@@ -19,6 +19,7 @@ router.get("/blog", async (req, res) => {
     const [filterName] = Object.keys(req.query);
     let filter = !filterName ? {} : { authorId: req.query[filterName] };
     const blogs = await Blog.find(filter);
+    console.log(blogs);
     res.status(200).send(blogs);
   } catch (err) {
     res.status(500).json(err);

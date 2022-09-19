@@ -30,19 +30,62 @@ const validate = (user) => {
   return Schema.validate(user);
 };
 
+const validateUpdate = (user) => {
+  const passwordValidations = {
+    min: 8,
+    max: 1024,
+    upperCase: 1,
+    numeric: 1,
+    requirementCount: 4,
+  };
+
+  const Schema = Joi.object({
+    name: Joi.string().min(2).max(50),
+    email: Joi.string().min(5).max(255).email(),
+    password: passwordComplexity(passwordValidations),
+    confirm_password: passwordComplexity(passwordValidations),
+    birthdate: Joi.date(),
+  });
+  return Schema.validate(user);
+};
+
+router.get("/user", async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/user/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+    console.log(user);
+    if (!user) return res.status(404).json({ err: "User Not Found!" });
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.post("/user", async (req, res) => {
   try {
+    // validate the data
     const result = validate(req.body);
     if (result.error)
       return res.status(400).json({ err: result.error.details[0].message });
 
     const user = result.value;
 
+    // check if user exist
     const exist = await User.findOne({ email: req.body.email });
     if (exist) {
       return res.status(400).json({ err: "There's account with this email" });
     }
 
+    // check if passowrd match
     if (user.password !== user.confirm_password) {
       return res.status(400).json({ err: "Password don't match" });
     }
@@ -65,6 +108,39 @@ router.post("/user", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
+  }
+});
+
+router.put("/user/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    // validate the data
+    const result = validateUpdate(req.body);
+    if (result.error)
+      return res.status(400).json({ err: result.error.details[0].message });
+
+    const update = result.value;
+    // console.log(update);
+
+    const user = await User.findByIdAndUpdate(userId, update);
+    console.log(user);
+    if (!user) return res.status(404).json({ err: "User Not Found!" });
+
+    res.status(200).send(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.delete("/user/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findByIdAndDelete(userId);
+    if (!user) return res.status(404).json({ err: "User Not Found!" });
+    res.status(200).json({ message: "User deleted!" });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

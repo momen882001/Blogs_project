@@ -13,15 +13,26 @@
 
 # APIs docs
 
-## signup:
-
-- route name: api/user
-- body: name, email, password, confirm_password, birthdate
-
 ## login:
 
 - route name: api/login
 - body: email, password
+
+## user:
+
+## POST api/user
+
+- route name: api/user
+- body: name, email, password, confirm_password, birthdate
+
+### GET api/user
+
+- return all users
+
+### GET api/user/:id
+
+- return user w/ given id
+- params: user id
 
 ## blog:
 

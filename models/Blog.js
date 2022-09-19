@@ -26,7 +26,7 @@ const blogSchema = new Schema(
     },
     authorId: {
       type: Schema.Types.ObjectId,
-      ref: "USer",
+      ref: "Uer",
     },
     title: {
       type: String,
