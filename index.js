@@ -1,10 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+// const dotenv = require("dotenv");
+require("dotenv").config();
+const passport = require("passport");
+const passportStrategy = require("./routes/passport");
 
 const app = express();
 
-const PORT = 4000;
+const PORT = 8080;
 
 main().catch((err) => console.log(err));
 
@@ -18,10 +22,13 @@ async function main() {
 
 app.use(cors());
 
+app.use(passport.initialize());
+// app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/api", require("./routes/user"));
+app.use("/", require("./routes/googleAuth"));
 app.use("/api", require("./routes/login"));
 app.use("/api", require("./routes/blog"));
 

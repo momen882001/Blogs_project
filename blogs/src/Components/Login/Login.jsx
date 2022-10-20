@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axios from '../API/axios'
 import './Login.css'
+import styles from "./styles.module.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
@@ -33,6 +35,13 @@ function Login() {
             setErr(err.response.data.err)
         })
     };
+    const googleAuth = () => {
+		window.open(
+			`http://localhost:8080/auth/google/callback`,
+			// `http://localhost:4000/api/auth/google/callback`,
+			"_self"
+		);
+	};
 
     return (
         <div className="login">
@@ -54,8 +63,9 @@ function Login() {
                 <button className="login-btn" type="submit">Login</button>
                 <div id="alternativeLogin">
                 <label className="before-google">Or sign in with:</label>
-                <div id="iconGroup">
+                <div id="iconGroup" onClick={googleAuth}>
                 <FontAwesomeIcon icon={faGoogle} style={{color:"rgba(11,83,148,1)", cursor:"pointer"}} size="lg"/>
+				
                 </div>
                 <div  className="links-contain">
                     
