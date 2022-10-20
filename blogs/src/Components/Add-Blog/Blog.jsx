@@ -2,6 +2,7 @@ import React , {useState} from 'react'
 import './Blog.css'
 import { useNavigate,Link } from "react-router-dom";
 import axios from '../API/axios'
+import imgLeft from '../assets/Add files-amico.png'
 
 function Blog() {
     const [category, setCategory] = useState('');
@@ -31,11 +32,18 @@ function Blog() {
     };
 
     return (
-        <div className="blog">
+        <div className="login">
+
+<section className="side" style={{padding:"0", margin:"0"}}>
+        <img src= {imgLeft} alt="" size="2x" style={{padding:"0", margin:"0"}}/>
+    </section>
+
+            <section className='main'>
+            <div className="login-container">
+            <p className="title" >Add-Blog</p>
+            <div className="separator" style={{margin: "5px", width:"150px",marginTop: "-7px",marginBottom: "20px", backgroundColor:"rgb(64 123 255)"}}></div>
+
             <form className="blog-form" onSubmit={onSubmit}>
-
-                <h1 className="h1-blog">Add Blog</h1>
-
                <div className="row-blog">
                <label htmlFor="blog-names">Choose Category:</label>
                 <select value={category} onChange={(e) => setCategory(e.target.value)} name="blog-names" id="blog-names">
@@ -63,22 +71,17 @@ function Blog() {
 
                <button className="blog-btn" type="submit">Save</button>
 
-               <div  className="links-contain">
-                    
-                    <Link to="/" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
-                    <p className="p-login">Home</p>
-                    </Link>
-                    
-                    
-                    <Link to="/sidebar/user" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
-                    <p className="p-login">My-Blogs</p>
-                    </Link>
-                    
+               <div className="other">
+                <Link to="/">
+                Home
+                  </Link>
+                  <Link to="/User">
+                  My-Blogs
+                  </Link>
                 </div>
-
-
-
             </form>
+            </div>
+            </section>
         </div>
     )
 }

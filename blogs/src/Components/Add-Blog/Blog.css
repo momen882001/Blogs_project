@@ -1,9 +1,6 @@
-/* @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 .blog{
-  /* background: rgb(34,193,195); */
-  /* background: linear-gradient(135deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%); */
   background-image: linear-gradient( 109.1deg, rgba(139,13,98,1) 17.5%, rgba(11,83,148,1) 100.2% );
   font-family: "work sans";
   height: 100vh;
@@ -13,7 +10,7 @@ html{
   font-size: 100%;
 }
 
-.blog-form{
+/* .blog-form{
   max-width: 500px;
   min-width: 300px;
   max-height: 700px;
@@ -25,7 +22,7 @@ html{
   transform: translate(-50%,-50%);
   background-color: #FFFFFF;
   border-radius: 25px;
-}
+} */
 
 .h1-blog{
   text-align: center;
@@ -41,7 +38,7 @@ html{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2.2rem;
+  padding-top: 1.2rem;
   max-width: 100%;
   
 }
@@ -58,7 +55,7 @@ html{
 }
 
 .row-blog input:focus{
-   box-shadow: inset 0px -3px 0px 0px rgba(11,83,148,1);
+   box-shadow: inset 0px -3px 0px 0px rgb(64 123 255);
    outline: none;
 }
 
@@ -79,7 +76,7 @@ html{
   padding-bottom: 0.9rem;
   /* color: rgba(187,187,187,0.9); */
   font-family: 'Roboto', sans-serif;
-  font-size: small;
+  font-size:larger;
   font-weight: bolder;
 }
 
@@ -89,13 +86,14 @@ html{
   height: 40px;
   margin-left: 30%;
   margin-top: 5%;
-  /* margin-bottom: 10%; */
+  margin-bottom: 5%;
   font-size: 1.3rem;
   color: white;
   font-weight: 700;
   /* background: rgb(34,193,195); */
   /* background: linear-gradient(90deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%); */
-  background-image: linear-gradient( 109.1deg, rgba(139,13,98,1) 17.5%, rgba(11,83,148,1) 100.2% );
+  /* background-image: linear-gradient( 109.1deg, rgba(139,13,98,1) 17.5%, rgba(11,83,148,1) 100.2% ); */
+  background-color: rgb(64 123 255);
   border: 0px;
   cursor: pointer;
   transition: 0.5s ease-out;
@@ -119,7 +117,7 @@ textarea {
 textarea:focus {
     /* box-shadow: inset 0px -1px 0px 0px rgba(34,193,195,0.7); */
    outline: none;
-   border: 2px solid rgba(11,83,148,1) ;
+   border: 2px solid rgb(64 123 255);
 }
 
 textarea ::placeholder {
@@ -138,7 +136,7 @@ textarea ::placeholder {
 
 #blog-names:focus {
     outline: none;
-   border: 2px solid rgba(11,83,148,1) ;
+   border: 2px solid rgb(64 123 255);
 }
 
 #textArea-blog {

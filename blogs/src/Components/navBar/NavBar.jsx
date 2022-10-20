@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css"
 
 function NavBar() {
+
+    const [isOpen, setIsOpen] = useState(false);
 
     const Logout = () => {
         localStorage.removeItem("auth-token")
@@ -13,25 +15,36 @@ function NavBar() {
     }
 
     return (
-        <nav className="navbar">
-            <div className="container">
-         <h2 className="logo-navbar">Blog-App</h2>
-          
-          {localStorage["auth-token"] !== undefined ?
-          <ul className="nav-links">
-              <Link style={{textDecoration:"none"}} to="/blog"><li>Add-Blog</li></Link>
-              <Link style={{textDecoration:"none"}} to="/sidebar/user"><li>My-Blogs</li></Link>
-              <Link style={{textDecoration:"none"}} to="" onClick={Logout}><li>Logout</li></Link>
-          </ul>
-          :
-          <ul className="nav-links">
-              <Link style={{textDecoration:"none"}} to="/login"><li>Login</li></Link>
-              <Link style={{textDecoration:"none"}} to="/signup"><li>Signup</li></Link>
-          </ul>
+
+         <div className="Navbar">
+         <Link style={{color:"white"}} to="/">
+         <span className="nav-logo" style={{color: "white", paddingLeft: "2rem", fontSize: "25px"}}>Greex</span>
+         </Link>
+         <div className={`nav-items ${isOpen && "open"}`}>
+         {localStorage["auth-token"] !== undefined ?
+          <>
+           <Link to="/blog" className="LCN">Add-Blog</Link>
+           <Link to="/sidebar/user" >My-Blogs</Link>
+           <Link to="" onClick={Logout} >Logout</Link>
+           </>
+           :
+           <>
+           <Link to="/login" >Login</Link>
+           <Link to="/signup" >SignUp</Link>
+           </>
           }
-          </div>
-        </nav>
+         </div>
+         <div
+           className={`nav-toggle ${isOpen && "open"}`}
+           onClick={() => setIsOpen(!isOpen)}
+         >
+           <div className="bar"></div>
+         </div>
+       </div>
     )
 }
 
 export default NavBar
+
+
+

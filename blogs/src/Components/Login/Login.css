@@ -236,8 +236,8 @@ input,
 button {
   border: none;
   outline: none;
-  border-radius: 20px;
-  /* font-size: 1.1em; */
+  border-radius: 30px;
+  font-size: 1.1em;
 }
 
 .form-control input {
