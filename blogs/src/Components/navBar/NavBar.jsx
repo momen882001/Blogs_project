@@ -18,7 +18,7 @@ function NavBar() {
 
          <div className="Navbar">
          <Link style={{color:"white"}} to="/">
-         <span className="nav-logo" style={{color: "white", paddingLeft: "2rem", fontSize: "25px"}}>Greex</span>
+         <span className="nav-logo" style={{color: "white", paddingLeft: "2rem", fontSize: "25px"}}>Blogs</span>
          </Link>
          <div className={`nav-items ${isOpen && "open"}`}>
          {localStorage["auth-token"] !== undefined ?
