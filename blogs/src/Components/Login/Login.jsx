@@ -6,7 +6,9 @@ import './Login.css'
 import styles from "./styles.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faLock, faAt } from "@fortawesome/free-solid-svg-icons";
+import imgLeft from '../assets/Blog Post.png'
+
 
 
 function Login() {
@@ -33,6 +35,7 @@ function Login() {
             console.log(response.data)
         }).catch((err) => {
             setErr(err.response.data.err)
+            console.log(err.response.data.err)
         })
     };
     const googleAuth = () => {
@@ -44,45 +47,43 @@ function Login() {
 	};
 
     return (
-        <div className="login">
-            <form className="loginform" onSubmit={handleSubmit(onSubmit)}>
-                <h1 className="h1-login">Login</h1>
 
-                <div className="row-login">
-                    <label htmlFor="">Email :</label>
-                    <input required  autoFocus type="email"{...register("email", { required: true, pattern: /^[a-zA-Z0-9].+@[a-zA-Z0-9]+\.[A-Za-z]+$/ })} placeholder="Write your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+    <div className="login" style={{padding:"0",margin:"0"}}>
+
+    <section className="side" style={{padding:"0", margin:"0"}}>
+        <img src= {imgLeft} alt="" size="2x" style={{padding:"0", margin:"0"}}/>
+    </section>
+
+    <section className="main" style={{padding:"0", margin:"0"}}>
+        <div className="login-container">
+            <p className="title" >Welcome back</p>
+            <div className="separator"></div>
+            <p className="welcome-message">Please, provide login credential to proceed and have access to all our services</p>
+
+            <form class="login-form" onSubmit={handleSubmit(onSubmit)}>
+                <div class="form-control">
+                    <input type="email" placeholder="Email" autoFocus {...register("email", { required: true, pattern: /^[a-zA-Z0-9].+@[a-zA-Z0-9]+\.[A-Za-z]+$/ })} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <FontAwesomeIcon className="icon" icon={faAt} color="white" size="2x"/>
                     {errors.email && <p className="error">Please Enter Valid Email </p>}
                 </div>
-
-                <div className="row-login">
-                    <label htmlFor="">Password :</label>
-                    <input required  type="password" {...register("password", { required: true, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/ })} placeholder="Write your password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <div class="form-control">
+                    <input type="password" placeholder="Password" required {...register("password", { required: true, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/ })} value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <FontAwesomeIcon className="icon" icon={faLock} color="white" size="2x" style={{top: "30%"}} />
                     {err === "" ? errors.password && <p className="error">Please Enter Valid Password </p> : <p className="error">{err}</p> }
                 </div>
-
-                <button className="login-btn" type="submit">Login</button>
-                <div id="alternativeLogin">
-                <label className="before-google">Or sign in with:</label>
-                <div id="iconGroup" onClick={googleAuth}>
-                <FontAwesomeIcon icon={faGoogle} style={{color:"rgba(11,83,148,1)", cursor:"pointer"}} size="lg"/>
-				
+                <button className="submit">Login</button>
+                <div className="other">
+                <Link to="">
+                  Forget Password?
+                  </Link>
+                  <Link to="/signUp">
+                  Create an account ?
+                  </Link>
                 </div>
-                <div  className="links-contain">
-                    
-                    <Link to="/signup" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
-                    <p className="p-login">Create an account?</p>
-                    </Link>
-                    
-                    
-                    <Link to="/" style={{textDecorationColor:"rgba(11,83,148,1)"}}>
-                    <p className="p-login">Forget password?</p>
-                    </Link>
-                    
-                </div>
-            </div>
             </form>
-            
         </div>
+    </section>
+    </div>
     )
 }
 
