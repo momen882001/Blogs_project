@@ -47,7 +47,7 @@ function Login() {
 
     <section className="main" style={{padding:"0", margin:"0"}}>
         <div className="login-container">
-            <p className="title" style={{fontSize: "2rem"}}>Welcome back</p>
+            <p className="title" >Welcome back</p>
             <div className="separator"></div>
             <p className="welcome-message">Please, provide login credential to proceed and have access to all our services</p>
 
