@@ -8,7 +8,7 @@ const passportStrategy = require("./routes/passport");
 
 const app = express();
 
-const PORT = 8080;
+const PORT = 4000;
 
 main().catch((err) => console.log(err));
 

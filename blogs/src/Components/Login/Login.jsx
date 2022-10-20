@@ -40,8 +40,8 @@ function Login() {
     };
     const googleAuth = () => {
 		window.open(
-			`http://localhost:8080/auth/google/callback`,
-			// `http://localhost:4000/api/auth/google/callback`,
+			// `http://localhost:8080/auth/google/callback`,
+			`http://localhost:4000/api/auth/google/callback`,
 			"_self"
 		);
 	};
