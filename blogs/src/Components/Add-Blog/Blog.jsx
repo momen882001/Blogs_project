@@ -3,6 +3,7 @@ import './Blog.css'
 import { useNavigate,Link } from "react-router-dom";
 import axios from '../API/axios'
 import imgLeft from '../assets/Add files-amico.png'
+import NavBar from '../navBar/NavBar'
 
 function Blog() {
     const [category, setCategory] = useState('');
@@ -32,8 +33,9 @@ function Blog() {
     };
 
     return (
+        <>
+         <NavBar/>
         <div className="login">
-
 <section className="side" style={{padding:"0", margin:"0"}}>
         <img src= {imgLeft} alt="" size="2x" style={{padding:"0", margin:"0"}}/>
     </section>
@@ -71,18 +73,19 @@ function Blog() {
 
                <button className="blog-btn" type="submit">Save</button>
 
-               <div className="other">
+               {/* <div className="other">
                 <Link to="/">
                 Home
                   </Link>
                   <Link to="/User">
                   My-Blogs
                   </Link>
-                </div>
+                </div> */}
             </form>
             </div>
             </section>
         </div>
+        </>
     )
 }
 
