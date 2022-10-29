@@ -24,7 +24,7 @@ function NavBar() {
          {localStorage["auth-token"] !== undefined ?
           <>
            <Link to="/blog" className="LCN">Add-Blog</Link>
-           <Link to="/sidebar/user" >My-Blogs</Link>
+           <Link to="/User" >My-Blogs</Link>
            <Link to="" onClick={Logout} >Logout</Link>
            </>
            :

@@ -62,7 +62,7 @@ function Login() {
 
             <form class="login-form" onSubmit={handleSubmit(onSubmit)}>
                 <div class="form-control">
-                    <input type="email" placeholder="Email" autoFocus {...register("email", { required: true, pattern: /^[a-zA-Z0-9].+@[a-zA-Z0-9]+\.[A-Za-z]+$/ })} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input type="email" required placeholder="Email" autoFocus {...register("email", { required: true, pattern: /^[a-zA-Z0-9].+@[a-zA-Z0-9]+\.[A-Za-z]+$/ })} value={email} onChange={(e) => setEmail(e.target.value)}/>
                     <FontAwesomeIcon className="icon" icon={faAt} color="white" size="2x"/>
                     {errors.email && <p className="error">Please Enter Valid Email </p>}
                 </div>

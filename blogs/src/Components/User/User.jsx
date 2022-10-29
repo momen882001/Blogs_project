@@ -10,6 +10,7 @@ import development from '../assets/pexels-lukas-574071.jpg'
 import sports from '../assets/pexels-pixabay-235922.jpg'
 import { Link } from "react-router-dom";
 import swal from 'sweetalert';
+import NavBar from '../navBar/NavBar';
 
 
 function User() {
@@ -147,17 +148,7 @@ function User() {
 
     return (
         <div className="user-contain" style={{ width: "100%" }}>
-            <nav className="navbar">
-                <div className="container">
-                    <h3 className="logo">My-Blogs</h3>
-
-                    <ul className="nav-links">
-                        <Link to="/blog" style={{ textDecoration: "none" }}><li style={{ color: "rgba(11,83,148,1)" }}>Add-Blog</li></Link>
-                        <Link to="" style={{ textDecoration: "none" }} onClick={() => Clear()}><li style={{ color: "rgba(11,83,148,1)" }}>Clear</li></Link>
-                        <Link to="/" style={{ textDecoration: "none" }}><li style={{ color: "rgba(11,83,148,1)" }}>Home</li></Link>
-                    </ul>
-                </div>
-            </nav>
+          <NavBar/>
 
             <h2 className="author">Welcome, {localStorage.getItem("author")}</h2>
 
