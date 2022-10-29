@@ -4,12 +4,8 @@ const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
 const _ = require("lodash");
-const jwt = require("jsonwebtoken");
-
-const createToken = (payload) => {
-  const token = jwt.sign(payload, "temporary secret for testing");
-  return token;
-};
+const verifyMail = require("../methods/mailer");
+const { createToken, encryptToken } = require("../methods/token_handeler");
 
 const validate = (user) => {
   const passwordValidations = {
@@ -98,8 +94,22 @@ router.post("/user", async (req, res) => {
 
     await newUser.save();
 
+    //generate JWT
     const token = createToken({ id: newUser._doc._id });
     res.header("auth-token", token);
+
+    //encrypt token to send it in verify link
+    const encrypted_token = encryptToken(token);
+
+    const link = process.env.HOST + "/api/verify?id=" + encrypted_token;
+
+    verifyMail(
+      newUser.email,
+      "Blogs verify mail",
+      "../assets/verify.html",
+      link,
+      newUser.name
+    );
 
     res.status(201).send({
       ...newUser._doc,

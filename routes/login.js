@@ -1,15 +1,10 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 const passwordComplexity = require("joi-password-complexity");
 const Joi = require("joi");
-
-const createToken = (payload) => {
-  const token = jwt.sign(payload, "temporary secret for testing");
-  return token;
-};
+const { createToken } = require("../methods/token_handeler");
 
 const validate = (user) => {
   const passwordValidations = {
@@ -43,6 +38,10 @@ router.post("/login", async (req, res) => {
     return res.status(400).json({ err: "Invalid email or password" });
   }
   user = exist._doc;
+
+  if (!user.verified) {
+    return res.status(400).json({ err: "Please verify your email" });
+  }
 
   const token = createToken({ id: user._id });
   res.header("auth-token", token);

@@ -28,9 +28,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/api", require("./routes/user"));
-app.use("/", require("./routes/googleAuth"));
 app.use("/api", require("./routes/login"));
 app.use("/api", require("./routes/blog"));
+app.use("/", require("./routes/googleAuth"));
+app.use("/api", require("./routes/verify"));
 
 app.listen(PORT, () => {
   console.log(`listening to ${PORT}`);
