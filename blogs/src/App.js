@@ -9,6 +9,8 @@ import User from './Components/User/User';
 import Edit from './Components/Edit-Blog/Edit';
 import ReadMore from './Components/ReadMorePage/ReadMore';
 import SideBar from './Components/SideBar/SideBar';
+import Error from './Components/Error_page/Error';
+import ProtectedRoutes from './Components/ProtectedRoutes';
 // import Test from './Components/SideBar/SideBar';
 
 
@@ -21,10 +23,13 @@ function App() {
          <Route path="/login" element={<Login/>}/>
          <Route path="/signup" element={<SignUp/>}/>
          <Route path="/blog" element={<Blog/>}/>
+         <Route element={<ProtectedRoutes/>}>
          <Route path="/User" element={<User/>}/>
          <Route path="/blog/edit/:blog_id" element={<Edit/>}/>
+         </Route>
          <Route path="/blog/readmore/:blog_id" element={<ReadMore/>}/>
          <Route path="/sidebar/user" element={<SideBar/>}/>
+         <Route path="*" element={<Error/>}/>
         </Routes>
       </Router>
     </div>

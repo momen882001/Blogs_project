@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from '../API/axios'
 import './Login.css'
 import styles from "./styles.module.css";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faAt } from "@fortawesome/free-solid-svg-icons";
 import imgLeft from '../assets/Blog Post.png'
@@ -28,7 +27,8 @@ function Login() {
             password
         }).then((response) => {
             console.log("posting data", response)
-            navigate('/sidebar/user');
+            // navigate('/sidebar/user');
+            navigate('/');
             localStorage.setItem("auth-token" , response.data.token)
             localStorage.setItem("user_id" , response.data._id)
             localStorage.setItem("author" , response.data.name)
