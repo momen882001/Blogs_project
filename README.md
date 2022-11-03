@@ -104,3 +104,11 @@
 ### DELETE api/blog
 
 - header: auth-token
+
+### POST api/forget_password
+
+- body: email
+
+### POST api/reset_password
+
+- body: password,confirm_password

@@ -25,12 +25,16 @@ router.get("/verify", async (req, res) => {
       "temporary secret for testing"
     );
 
+    //find the user
     const user = await User.findById(decoded_token.id);
+    if (!user) return res.status(404).json({ message: "User Not Found!" });
 
+    //check if user verified
     if (user.verified) {
       return res.status(200).send(`${user.name} is aleready verified`);
     }
 
+    //check the link is expired
     const tokenTime = decoded_token.iat * 1000;
     if (expire(tokenTime, 2)) {
       res
@@ -38,7 +42,6 @@ router.get("/verify", async (req, res) => {
         .send("The link is expired. We are sending you a new email.");
 
       //send another mail
-
       const token = createToken({ id: user._id });
 
       //encrypt token to send it in verify link
@@ -56,6 +59,7 @@ router.get("/verify", async (req, res) => {
       return;
     }
 
+    //verify the user
     user.verified = true;
     await user.save();
     res.status(200).redirect(process.env.FRONT_HOST + "/login");
