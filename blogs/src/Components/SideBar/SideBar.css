@@ -21,10 +21,10 @@
   .sidebar {
     /* background: rgb(0, 7, 61); */
     /* background-image: linear-gradient( 109.1deg, rgba(139,13,98,1) 17.5%, rgba(11,83,148,1) 100.2% ); */
-    background-color: rgba(11,83,148,1);
+    background-color: rgb(64 123 255);
     color: white;
-    /* height:100vh; */
-    overflow-y: auto;
+    height:100vh;
+    /* overflow-y: auto; */
   }
   
   .top_section {
@@ -75,11 +75,11 @@
     border-right: 4px solid transparent;
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   }
-  .link:hover {
+  /* .link:hover {
     border-right: 4px solid white;
     background: rgb(45, 51, 89);
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  }
+  } */
   .active {
     border-right: 4px solid white;
     background: rgb(45, 51, 89);

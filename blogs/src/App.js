@@ -22,14 +22,14 @@ function App() {
          <Route path="/" element={<Home/>}/>
          <Route path="/login" element={<Login/>}/>
          <Route path="/signup" element={<SignUp/>}/>
-         <Route path="/blog" element={<Blog/>}/>
          <Route element={<ProtectedRoutes/>}>
          <Route path="/User" element={<User/>}/>
+         <Route path="/blog" element={<Blog/>}/>
          <Route path="/blog/edit/:blog_id" element={<Edit/>}/>
          </Route>
          <Route path="/blog/readmore/:blog_id" element={<ReadMore/>}/>
-         <Route path="/sidebar/user" element={<SideBar/>}/>
          <Route path="*" element={<Error/>}/>
+         {/* <Route path="/sidebar/user" element={<SideBar/>}/> */}
         </Routes>
       </Router>
     </div>

@@ -27,7 +27,7 @@ function SignUp() {
             birthdate
         }).then((response) => {
             console.log("posting data", response)
-            navigate('/sidebar/user');
+            navigate('/');
             localStorage.setItem("auth-token", response.data.token)
             localStorage.setItem("user_id", response.data._id)
             localStorage.setItem("author", response.data.name)
