@@ -9,10 +9,15 @@
 </head>
 
 <body>
-    <h1>Hello {{ username }}
-    </h1>
-    <p>please click the link below to reset your password</p>
-    <a href={{ link }}>link</a>
+
+    <h2>Hello {{ username}},</h2>
+
+    <p>There was a request to change your password!
+
+        If you did not make this request then please ignore this email.
+
+        Otherwise, please click this link to change your password: <a href={{ link }}>link</a></p>
+    <p style="font-weight: bold;">this password reset is only valid for the next 24 hour</p>
 </body>
 
 </html>

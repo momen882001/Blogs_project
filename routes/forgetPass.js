@@ -9,7 +9,7 @@ const verifyMail = require("../methods/mailer");
 const { createToken, encryptToken } = require("../methods/token_handeler");
 const expire = require("../methods/expire");
 
-const validateUpdate = (user) => {
+const validate = (user) => {
   const passwordValidations = {
     min: 8,
     max: 1024,
@@ -60,29 +60,29 @@ router.post("/forget_password", async (req, res) => {
 });
 
 router.post("/reset_password", async (req, res) => {
-  const encrypted_token = req.query["id"];
-  // Key to encrypt and decrypt the token
-  let mykey = crypto.createDecipheriv(
-    "aes-128-cbc",
-    process.env.CIPHER_PASSWORD,
-    process.env.INIT_VECTOR
-  );
-
-  // validate the data
-  const result = validate(req.body);
-  if (result.error)
-    return res.status(400).json({ err: result.error.details[0].message });
-
-  const body = result.value;
-
-  // check if password match
-  if (body.password !== body.confirm_password) {
-    return res.status(400).json({ err: "Password don't match" });
-  }
-
-  let { password } = body;
-
   try {
+    const encrypted_token = req.query["id"];
+    // Key to encrypt and decrypt the token
+    let mykey = crypto.createDecipheriv(
+      "aes-128-cbc",
+      process.env.CIPHER_PASSWORD,
+      process.env.INIT_VECTOR
+    );
+
+    // validate the data
+    const result = validate(req.body);
+    if (result.error)
+      return res.status(400).json({ err: result.error.details[0].message });
+
+    const body = result.value;
+
+    // check if password match
+    if (body.password !== body.confirm_password) {
+      return res.status(400).json({ err: "Password don't match" });
+    }
+
+    let { password } = body;
+
     //decrypt the token
     let decrypted_token = mykey.update(encrypted_token, "hex", "utf8");
     decrypted_token += mykey.final("utf8");
