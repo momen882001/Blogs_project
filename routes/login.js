@@ -32,6 +32,10 @@ router.post("/login", async (req, res) => {
 
   if (!exist) return res.status(400).json({ err: "Invalid email or password" });
 
+  if (exist.withGoogle) {
+    return res.status(400).json({ err: "Invalid email or password" });
+  }
+
   const validPass = await bcrypt.compare(user.password, exist.password);
 
   if (!validPass) {

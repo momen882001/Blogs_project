@@ -154,15 +154,15 @@ router.delete("/user/:userId", async (req, res) => {
   }
 });
 
-router.delete("/user", (req, res) => {
-  try {
-    User.deleteMany({}, (err) => {
-      if (err) throw err;
-      res.sendStatus(200);
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.delete("/user", (req, res) => {
+//   try {
+//     User.deleteMany({}, (err) => {
+//       if (err) throw err;
+//       res.sendStatus(200);
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;

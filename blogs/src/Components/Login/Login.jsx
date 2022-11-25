@@ -5,13 +5,15 @@ import axios from '../API/axios'
 import './Login.css'
 import styles from "./styles.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faLock, faAt } from "@fortawesome/free-solid-svg-icons";
 import imgLeft from '../assets/Blog Post.png'
 
 
 
 function Login() {
-
+    
+    
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -76,6 +78,10 @@ function Login() {
                 <Link to="">
                   Forget Password?
                   </Link>
+                <div id="iconGroup" onClick={googleAuth}>
+                <FontAwesomeIcon icon={faGoogle} style={{color:"rgba(11,83,148,1)", cursor:"pointer"}} size="lg"/>
+				
+                </div>
                   <Link to="/signUp">
                   Create an account ?
                   </Link>

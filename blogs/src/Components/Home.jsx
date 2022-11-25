@@ -16,7 +16,16 @@ function Home() {
 
     const [data, setData] = useState([]);
     // const [author,setAuthor] = useState()
-
+    const getUser = async () => {
+        try {
+          const url = `/auth/login/success`;
+          const { data } = await axios.get(url, { withCredentials: true });
+          console.log(data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getUser()
     useEffect(() => {
         axios.get('/blog')
             .then((response) => {

@@ -16,9 +16,12 @@ const userSchema = new Schema(
     },
     birthdate: {
       type: Date,
-      required: true,
     },
     verified: {
+      type: Boolean,
+      default: false,
+    },
+    withGoogle: {
       type: Boolean,
       default: false,
     },

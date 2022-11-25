@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser ,faUnlockKeyhole ,faAt , faCakeCandles} from "@fortawesome/free-solid-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import imgRight from '../assets/register.png'
 import axios from '../API/axios'
 
@@ -35,6 +36,13 @@ function SignUp() {
             setErr(err.response.data.err)
         })
     };
+    const googleAuth = () => {
+		window.open(
+			// `http://localhost:8080/auth/google/callback`,
+			`http://localhost:4000/api/auth/google/callback`,
+			"_self"
+		);
+	};
 
     return (                
 
@@ -72,6 +80,9 @@ function SignUp() {
                 {(password === confirm_password || confirm_password === null) && err !== undefined ? <p className="confirm-pass">{err}</p> : <p className="error" style={{marginTop:"-1.32rem", marginBottom: "1.3rem"}}>Write Confirm Password agian</p>}
                 <button className="submit" style={{marginTop: "-3px",backgroundColor:"rgb(27 155 133)"}} >Submit</button>
                 <div className="other">
+                <div id="iconGroup" onClick={googleAuth}>
+                <FontAwesomeIcon icon={faGoogle} style={{color:"rgba(11,83,148,1)", cursor:"pointer"}} size="lg"/>
+                </div>
                   <Link to="/login">
                   Already have an account ?
                   </Link>
